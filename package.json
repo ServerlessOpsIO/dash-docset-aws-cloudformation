@@ -1,0 +1,21 @@
+{
+  "name": "dash-docset-aws-cloudformation",
+  "version": "0.0.1",
+  "description": "Dash docset for AWS CloudFormation",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ServerlessOpsIO/dash-docset-aws-cloudformation.git"
+  },
+  "author": {
+    "name": "Tom McLaughlin",
+    "email": "tom@serverlessops.io"
+  },
+  "license": "BSD-2-Clause",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "typescript": "^5.6.2"
+  }
+}
