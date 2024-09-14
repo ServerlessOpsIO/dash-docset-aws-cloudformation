@@ -15,7 +15,7 @@ coverage
 .env
 
 # Dependency management
-.yarn/*
+.yarn
 !.yarn/patches
 !.yarn/releases
 !.yarn/plugins
@@ -43,3 +43,5 @@ yarn.lock
 
 # IDE
 .vscode
+!.vscode/launch.json
+!.vscode/tasks.json
