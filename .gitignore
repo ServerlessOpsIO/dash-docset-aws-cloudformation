@@ -14,7 +14,14 @@ coverage
 # API keys and secrets
 .env
 
-# Dependency directory
+# Dependency management
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 node_modules
 
 # Editors
