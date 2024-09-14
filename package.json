@@ -22,6 +22,11 @@
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
+    "@types/fs-extra": "^11",
     "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "path": "^0.12.7"
   }
 }
