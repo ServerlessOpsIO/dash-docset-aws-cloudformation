@@ -15,6 +15,11 @@
     "node": ">=20.0.0"
   },
   "packageManager": "yarn@4.4.1",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "yarn run clean && tsc",
+    "generate": "node dist/src/index.js"
+  },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
     "typescript": "^5.6.2"
