@@ -313,6 +313,77 @@ describe('fetchDocsToc', () => {
         })
     })
 
+    describe('queryToc()', () => {
+        describe('should succeed when', () => {
+            test('single-level query returns a single result', async () => {
+                const mockToc: Toc = {
+                    contents: [
+                        {
+                            title: "level.1",
+                            href: "level.1.html",
+                            contents: [
+                                {
+                                    title: "level.2.1",
+                                    href: "level.2.1.html"
+                                },
+                                {
+                                    title: "level.2.2",
+                                    href: "level.2.2.html"
+                                }
+                            ]
+                        }
+                    ]
+                }
+
+                const expectedValue = {
+                    title: "level.1",
+                    href: "level.1.html",
+                    contents: [
+                        {
+                            title: "level.2.1",
+                            href: "level.2.1.html"
+                        },
+                        {
+                            title: "level.2.2",
+                            href: "level.2.2.html"
+                        }
+                    ]
+                }
+
+                const result = await queryToc(mockToc, '$.contents[?(@.title=="level.1")]')
+                expect(result).toStrictEqual(expectedValue)
+            })
+            test('multi-level query returns a single result', async () => {
+                const mockToc: Toc = {
+                    contents: [
+                        {
+                            title: "level.1",
+                            href: "level.1.html",
+                            contents: [
+                                {
+                                    title: "level.2.1",
+                                    href: "level.2.1.html"
+                                },
+                                {
+                                    title: "level.2.2",
+                                    href: "level.2.2.html"
+                                }
+                            ]
+                        }
+                    ]
+                }
+
+                const expectedValue = {
+                    title: "level.2.1",
+                    href: "level.2.1.html"
+                }
+
+                const result = await queryToc(mockToc, '$.contents[?(@.title=="level.1")].contents[?(@.title=="level.2.1")]')
+                expect(result).toStrictEqual(expectedValue)
+            })
+        })
+    })
+
     describe.skip('fetchDocsToc()', () => {
         const mockToc = JSON.parse(
             fs.readFileSync(

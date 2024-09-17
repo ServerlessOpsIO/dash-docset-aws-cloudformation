@@ -57,6 +57,24 @@ export async function fetchIncludeContents(tocItem: TocItem, urlRoot: string): P
 }
 
 /**
+ * Query the toc using the query string and return the first (and should be only) result.
+ *
+ * @param toc
+ * @param query
+ */
+export async function queryToc(toc: Toc, query: string): Promise<TocItem> {
+    const result = jp.query(toc, query)
+
+    if (result.length == 0) {
+        throw new Error('Query returned no results')
+    } else if (result.length > 1) {
+        throw new Error('Query returned multiple results')
+    }
+
+    return result[0]
+}
+
+/**
  * For the given tocItem, if it has an include_contents property then pass the tocItem to
  * and replace the tocItem with the result of fetchIncludeContents. If the tocItem has a contents property then pass each item in the array to resolveIncludeContents.
  */
@@ -84,23 +102,23 @@ export async function resolveIncludeContents(
 
 export async function fetchDocsToc(url: string): Promise<void> {
     const response = await fetch(url)
-    const toc = await response.json()
+    const toc = await response.json() as Toc
 
-    const resources = jp.query(
-        <Toc>toc, `$.contents[?(@.title=="${Titles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${Titles.RESOURCE_AND_PROPERTY_REFERENCE}")]`
-    )[0]
+    const tocSectionQueries = {
+        resources: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.RESOURCE_AND_PROPERTY_REFERENCE}")]`,
+        pseudoParameters: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.PSEUDO_PARAMETERS}")]`,
+        intrinsicFunctions: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.INTRINSIC_FUNCTIONS}")]`,
+        resourceAttributes: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.RESOURCE_ATTRIBUTES}")]`,
+    }
 
-    const pseudoParameters = jp.query(
-        <Toc>toc, `$.contents[?(@.title=="${Titles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${Titles.PSEUDO_PARAMETERS}")]`
-    )[0]
+    let tocSections: {[key: string]: TocItem} = {}
+    await Promise.all(
+        Object.entries(tocSectionQueries).map(async ([section, query]) => {
+            const tocItem = await queryToc(toc, query)
+            tocSections[section] = tocItem
+        })
+    )
 
-    const intrinsicFunctions = jp.query(
-        <Toc>toc, `$.contents[?(@.title=="${Titles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${Titles.INTRINSIC_FUNCTIONS}")]`
-    )[0]
-
-    const resourceAttributes = jp.query(
-        <Toc>toc, `$.contents[?(@.title=="${Titles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${Titles.RESOURCE_ATTRIBUTES}")]`
-    )[0]
 
     const { origin, pathname } = new URL(url)
     const resolvedResources = await resolveIncludeContents(
