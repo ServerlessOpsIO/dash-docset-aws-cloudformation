@@ -6,6 +6,7 @@ import fetch from "jest-fetch-mock"
 import {
     fetchDocsToc,
     fetchIncludeContents,
+    queryToc,
     resolveIncludeContents,
     Toc,
     TocItem

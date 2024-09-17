@@ -1,7 +1,8 @@
 import jp from 'jsonpath'
 import path from 'path'
 
-enum Titles {
+
+export enum TocSectionTitles {
     TEMPLATE_REFERENCE = 'Template reference',
     RESOURCE_AND_PROPERTY_REFERENCE = 'Resource and property reference',
     RESOURCE_ATTRIBUTES = 'Resource attributes',
@@ -19,6 +20,20 @@ export interface TocItem {
     href: string
     contents?: TocItem[]
     include_contents?: string
+}
+
+interface TocSectionsQueries {
+    resources: string
+    pseudoParameters: string
+    intrinsicFunctions: string
+    resourceAttributes: string
+}
+
+export interface TocSections {
+    resources?: TocItem
+    pseudoParameters?: TocItem
+    intrinsicFunctions?: TocItem
+    resourceAttributes?: TocItem
 }
 
 export interface Toc {
@@ -100,45 +115,33 @@ export async function resolveIncludeContents(
 }
 
 
-export async function fetchDocsToc(url: string): Promise<void> {
+export async function fetchDocsToc(url: string): Promise<TocSections> {
     const response = await fetch(url)
     const toc = await response.json() as Toc
 
-    const tocSectionQueries = {
+    const tocSectionQueries: TocSectionsQueries = {
         resources: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.RESOURCE_AND_PROPERTY_REFERENCE}")]`,
         pseudoParameters: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.PSEUDO_PARAMETERS}")]`,
         intrinsicFunctions: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.INTRINSIC_FUNCTIONS}")]`,
         resourceAttributes: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.RESOURCE_ATTRIBUTES}")]`,
     }
 
-    let tocSections: {[key: string]: TocItem} = {}
+    let docSections: TocSections = {}
+
     await Promise.all(
         Object.entries(tocSectionQueries).map(async ([section, query]) => {
-            const tocItem = await queryToc(toc, query)
-            tocSections[section] = tocItem
+            (docSections as any)[section] =  await queryToc(toc, query)
         })
     )
 
-
     const { origin, pathname } = new URL(url)
-    const resolvedResources = await resolveIncludeContents(
-        resources,
-        origin + path.dirname(pathname)
+    await Promise.all(
+        Object.entries(docSections).map(async ([section, tocItem]) => {
+            (docSections as any)[section] = await resolveIncludeContents(
+                tocItem, origin + path.dirname(pathname)
+            )
+        })
     )
 
-
-    const resolvedPseudoParameters = await resolveIncludeContents(
-        pseudoParameters,
-        origin + path.dirname(pathname)
-    )
-
-    const resolvedIntrinsicFunctions = await resolveIncludeContents(
-        intrinsicFunctions,
-        origin + path.dirname(pathname)
-    )
-
-    const resolvedResourceAttributes = await resolveIncludeContents(
-        resourceAttributes,
-        origin + path.dirname(pathname)
-    )
+    return docSections
 }
