@@ -1,0 +1,92 @@
+{
+  "contents": [
+      {
+          "title": "Amazon CloudWatch Logs",
+          "href": "AWS_Logs.html",
+          "contents": [
+              {
+                  "title": "AWS::Logs::AccountPolicy",
+                  "href": "aws-resource-logs-accountpolicy.html"
+              },
+              {
+                  "title": "AWS::Logs::Delivery",
+                  "href": "aws-resource-logs-delivery.html",
+                  "contents": [
+                      {
+                          "title": "Tag",
+                          "href": "aws-properties-logs-delivery-tag.html"
+                      }
+                  ]
+              },
+              {
+                  "title": "AWS::Logs::DeliveryDestination",
+                  "href": "aws-resource-logs-deliverydestination.html",
+                  "contents": [
+                      {
+                          "title": "Tag",
+                          "href": "aws-properties-logs-deliverydestination-tag.html"
+                      }
+                  ]
+              },
+              {
+                  "title": "AWS::Logs::DeliverySource",
+                  "href": "aws-resource-logs-deliverysource.html",
+                  "contents": [
+                      {
+                          "title": "Tag",
+                          "href": "aws-properties-logs-deliverysource-tag.html"
+                      }
+                  ]
+              },
+              {
+                  "title": "AWS::Logs::Destination",
+                  "href": "aws-resource-logs-destination.html"
+              },
+              {
+                  "title": "AWS::Logs::LogAnomalyDetector",
+                  "href": "aws-resource-logs-loganomalydetector.html"
+              },
+              {
+                  "title": "AWS::Logs::LogGroup",
+                  "href": "aws-resource-logs-loggroup.html",
+                  "contents": [
+                      {
+                          "title": "Tag",
+                          "href": "aws-properties-logs-loggroup-tag.html"
+                      }
+                  ]
+              },
+              {
+                  "title": "AWS::Logs::LogStream",
+                  "href": "aws-resource-logs-logstream.html"
+              },
+              {
+                  "title": "AWS::Logs::MetricFilter",
+                  "href": "aws-resource-logs-metricfilter.html",
+                  "contents": [
+                      {
+                          "title": "Dimension",
+                          "href": "aws-properties-logs-metricfilter-dimension.html"
+                      },
+                      {
+                          "title": "MetricTransformation",
+                          "href": "aws-properties-logs-metricfilter-metrictransformation.html"
+                      }
+                  ]
+              },
+              {
+                  "title": "AWS::Logs::QueryDefinition",
+                  "href": "aws-resource-logs-querydefinition.html"
+              },
+              {
+                  "title": "AWS::Logs::ResourcePolicy",
+                  "href": "aws-resource-logs-resourcepolicy.html"
+              },
+              {
+                  "title": "AWS::Logs::SubscriptionFilter",
+                  "href": "aws-resource-logs-subscriptionfilter.html"
+              }
+          ]
+      }
+  ]
+}

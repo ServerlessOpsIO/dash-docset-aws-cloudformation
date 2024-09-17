@@ -1,0 +1,2394 @@
+{
+  "contents": [
+    {
+      "title": "What is AWS CloudFormation?",
+      "href": "Welcome.html"
+    },
+    {
+      "title": "Getting started",
+      "href": "GettingStarted.html",
+      "contents": [
+        {
+          "title": "How CloudFormation works",
+          "href": "cloudformation-overview.html"
+        },
+        {
+          "title": "Sign up for an AWS account",
+          "href": "cfn-sign-up-for-aws.html"
+        },
+        {
+          "title": "Walkthrough: Creating your first stack",
+          "href": "gettingstarted.walkthrough.html"
+        },
+        {
+          "title": "Walkthrough: Updating a stack",
+          "href": "updating.stacks.walkthrough.html"
+        },
+        {
+          "title": "Quotas",
+          "href": "cloudformation-limits.html"
+        }
+      ]
+    },
+    {
+      "title": "Best practices",
+      "href": "best-practices.html"
+    },
+    {
+      "title": "Working with templates",
+      "href": "template-guide.html",
+      "contents": [
+        {
+          "title": "Templates overview",
+          "href": "stack-templates-overview.html"
+        },
+        {
+          "title": "Template formats",
+          "href": "template-formats.html",
+          "contents": [
+            {
+              "title": "Using regular expressions",
+              "href": "cfn-regexes.html"
+            }
+          ]
+        },
+        {
+          "title": "Template sections",
+          "href": "template-anatomy.html",
+          "contents": [
+            {
+              "title": "Resources",
+              "href": "resources-section-structure.html"
+            },
+            {
+              "title": "Parameters",
+              "href": "parameters-section-structure.html"
+            },
+            {
+              "title": "Outputs",
+              "href": "outputs-section-structure.html"
+            },
+            {
+              "title": "Mappings",
+              "href": "mappings-section-structure.html"
+            },
+            {
+              "title": "Metadata",
+              "href": "metadata-section-structure.html",
+              "contents": [
+                {
+                  "title": "AWS::CloudFormation::Authentication",
+                  "href": "aws-resource-authentication.html"
+                },
+                {
+                  "title": "AWS::CloudFormation::Init",
+                  "href": "aws-resource-init.html"
+                },
+                {
+                  "title": "AWS::CloudFormation::Interface",
+                  "href": "aws-resource-cloudformation-interface.html",
+                  "contents": [
+                    {
+                      "title": "Label",
+                      "href": "aws-properties-cloudformation-interface-label.html"
+                    },
+                    {
+                      "title": "ParameterGroup",
+                      "href": "aws-properties-cloudformation-interface-parametergroup.html"
+                    },
+                    {
+                      "title": "ParameterLabel",
+                      "href": "aws-properties-cloudformation-interface-parameterlabel.html"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Rules",
+              "href": "rules-section-structure.html",
+              "contents": [
+                {
+                  "title": "Rule Functions",
+                  "href": "intrinsic-function-reference-rules.html"
+                }
+              ]
+            },
+            {
+              "title": "Conditions",
+              "href": "conditions-section-structure.html"
+            },
+            {
+              "title": "Transform",
+              "href": "transform-section-structure.html"
+            },
+            {
+              "title": "Format version",
+              "href": "format-version-structure.html"
+            },
+            {
+              "title": "Description",
+              "href": "template-description-structure.html"
+            }
+          ]
+        },
+        {
+          "title": "Application Composer",
+          "href": "app-composer-for-cloudformation.html",
+          "contents": [
+            {
+              "title": "Old Designer",
+              "href": "working-with-templates-cfn-designer.html"
+            }
+          ]
+        },
+        {
+          "title": "IaC generator",
+          "href": "generate-IaC.html",
+          "contents": [
+            {
+              "title": "Start a resource scan",
+              "href": "iac-generator-start-resource-scan.html"
+            },
+            {
+              "title": "View the scan summary",
+              "href": "generate-IaC-view-scan-summary.html"
+            },
+            {
+              "title": "Create a template from scanned resources",
+              "href": "iac-generator-create-template-from-scanned-resources.html"
+            },
+            {
+              "title": "Create a stack from scanned resources",
+              "href": "iac-generator-create-stack-from-scanned-resources.html"
+            },
+            {
+              "title": "Resolve write-only properties",
+              "href": "generate-IaC-write-only-properties.html",
+              "contents": [
+                {
+                  "title": "AWS::ApiGateway::RestApi write-only properties",
+                  "href": "generate-IaC-apigateway-restapi.html"
+                },
+                {
+                  "title": "AWS::Lambda::Function write-only properties",
+                  "href": "generate-IaC-lambda-function.html"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Get values stored in other services",
+          "href": "dynamic-references.html",
+          "contents": [
+            {
+              "title": "Get Systems Manager plaintext value",
+              "href": "dynamic-references-ssm.html"
+            },
+            {
+              "title": "Get Systems Manager secure string",
+              "href": "dynamic-references-ssm-secure-strings.html"
+            },
+            {
+              "title": "Get Secrets Manager value",
+              "href": "dynamic-references-secretsmanager.html"
+            }
+          ]
+        },
+        {
+          "title": "Get stack outputs",
+          "href": "using-cfn-stack-exports.html"
+        },
+        {
+          "title": "Use CloudFormation-supplied parameter types",
+          "href": "cloudformation-supplied-parameter-types.html",
+          "contents": [
+            {
+              "title": "AWS-specific parameter types reference",
+              "href": "aws-specific-parameter-types.html"
+            },
+            {
+              "title": "Systems Manager parameter types reference",
+              "href": "systems-manager-parameter-types.html"
+            }
+          ]
+        },
+        {
+          "title": "Use CloudFormation-supplied resource types",
+          "href": "cloudformation-supplied-resource-types.html",
+          "contents": [
+            {
+              "title": "Custom resources",
+              "href": "template-custom-resources.html",
+              "contents": [
+                {
+                  "title": "Amazon SNS-backed custom resources",
+                  "href": "template-custom-resources-sns.html"
+                },
+                {
+                  "title": "Lambda-backed custom resources",
+                  "href": "template-custom-resources-lambda.html",
+                  "contents": [
+                    {
+                      "title": "Walkthrough: Look up AMI IDs",
+                      "href": "walkthrough-custom-resources-lambda-lookup-amiids.html"
+                    },
+                    {
+                      "title": "cfn-response module",
+                      "href": "cfn-lambda-function-code-cfnresponsemodule.html"
+                    }
+                  ]
+                },
+                {
+                  "title": "Custom resource reference",
+                  "href": "crpg-ref.html",
+                  "contents": [
+                    {
+                      "title": "Request objects",
+                      "href": "crpg-ref-requests.html"
+                    },
+                    {
+                      "title": "Response objects",
+                      "href": "crpg-ref-responses.html"
+                    },
+                    {
+                      "title": "Request types",
+                      "href": "crpg-ref-requesttypes.html",
+                      "contents": [
+                        {
+                          "title": "Create",
+                          "href": "crpg-ref-requesttypes-create.html"
+                        },
+                        {
+                          "title": "Delete",
+                          "href": "crpg-ref-requesttypes-delete.html"
+                        },
+                        {
+                          "title": "Update",
+                          "href": "crpg-ref-requesttypes-update.html"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Template macros",
+              "href": "template-macros.html",
+              "contents": [
+                {
+                  "title": "Macro example: Creating and using a macro",
+                  "href": "macros-example.html"
+                }
+              ]
+            },
+            {
+              "title": "Modules",
+              "href": "modules.html"
+            },
+            {
+              "title": "Nested stacks",
+              "href": "using-cfn-nested-stacks.html"
+            },
+            {
+              "title": "Wait conditions",
+              "href": "using-cfn-waitcondition.html"
+            }
+          ]
+        },
+        {
+          "title": "Walkthroughs",
+          "href": "walkthroughs.html",
+          "contents": [
+            {
+              "title": "Refer to resource outputs in another CloudFormation stack",
+              "href": "walkthrough-crossstackref.html"
+            },
+            {
+              "title": "Deploy applications on Amazon EC2",
+              "href": "deploying.applications.html"
+            },
+            {
+              "title": "Peer with a VPC in another account",
+              "href": "peer-with-vpc-in-another-account.html"
+            },
+            {
+              "title": "Create a scaled and load-balanced application",
+              "href": "example-templates-autoscaling.html"
+            },
+            {
+              "title": "Perform ECS blue/green deployments",
+              "href": "blue-green.html",
+              "contents": [
+                {
+                  "title": "About blue/green deployments",
+                  "href": "about-blue-green-deployments.html"
+                },
+                {
+                  "title": "Considerations",
+                  "href": "blue-green-considerations.html"
+                },
+                {
+                  "title": "Hook syntax",
+                  "href": "blue-green-hook-syntax.html"
+                },
+                {
+                  "title": "Template example",
+                  "href": "blue-green-template-example.html"
+                }
+              ]
+            },
+            {
+              "title": "Use Designer to create a basic web server",
+              "href": "working-with-templates-cfn-designer-walkthrough-createbasicwebserver.html"
+            },
+            {
+              "title": "Use Designer to modify a template",
+              "href": "working-with-templates-cfn-designer-walkthrough-updatebasicwebserver.html"
+            }
+          ]
+        },
+        {
+          "title": "Template snippets",
+          "href": "template-snippets.html",
+          "contents": [
+            {
+              "title": "General",
+              "href": "quickref-general.html"
+            },
+            {
+              "title": "Auto scaling",
+              "href": "quickref-autoscaling.html",
+              "contents": [
+                {
+                  "title": "Configure Amazon EC2 Auto Scaling resources",
+                  "href": "quickref-ec2-auto-scaling.html"
+                },
+                {
+                  "title": "Configure Application Auto Scaling resources",
+                  "href": "quickref-application-auto-scaling.html"
+                }
+              ]
+            },
+            {
+              "title": "AWS Billing Console",
+              "href": "quickref-billingconductor.html"
+            },
+            {
+              "title": "AWS CloudFormation",
+              "href": "quickref-cloudformation.html"
+            },
+            {
+              "title": "CloudFront",
+              "href": "quickref-cloudfront.html"
+            },
+            {
+              "title": "CloudWatch",
+              "href": "quickref-cloudwatch.html"
+            },
+            {
+              "title": "CloudWatch Logs",
+              "href": "quickref-cloudwatchlogs.html"
+            },
+            {
+              "title": "DynamoDB",
+              "href": "quickref-dynamodb.html"
+            },
+            {
+              "title": "Amazon EC2",
+              "href": "quickref-ec2.html",
+              "contents": [
+                {
+                  "title": "Configure EC2 instances",
+                  "href": "quickref-ec2-instance-config.html"
+                },
+                {
+                  "title": "Create launch templates",
+                  "href": "quickref-ec2-launch-templates.html"
+                },
+                {
+                  "title": "Manage security groups",
+                  "href": "quickref-ec2-sg.html"
+                },
+                {
+                  "title": "Allocate Elastic IPs",
+                  "href": "quickref-ec2-elastic-ip.html"
+                },
+                {
+                  "title": "Configure VPC resources",
+                  "href": "quickref-ec2-vpc.html"
+                }
+              ]
+            },
+            {
+              "title": "Amazon ECS",
+              "href": "quickref-ecs.html"
+            },
+            {
+              "title": "Amazon EFS",
+              "href": "quickref-efs.html"
+            },
+            {
+              "title": "Elastic Beanstalk",
+              "href": "quickref-elasticbeanstalk.html"
+            },
+            {
+              "title": "Elastic Load Balancing",
+              "href": "quickref-elb.html"
+            },
+            {
+              "title": "IAM",
+              "href": "quickref-iam.html"
+            },
+            {
+              "title": "AWS Lambda",
+              "href": "quickref-lambda.html"
+            },
+            {
+              "title": "AWS OpsWorks",
+              "href": "quickref-opsworks.html"
+            },
+            {
+              "title": "Amazon Redshift",
+              "href": "quickref-redshift.html"
+            },
+            {
+              "title": "Amazon RDS",
+              "href": "quickref-rds.html"
+            },
+            {
+              "title": "Route 53",
+              "href": "quickref-route53.html"
+            },
+            {
+              "title": "Amazon S3",
+              "href": "quickref-s3.html"
+            },
+            {
+              "title": "Amazon SNS",
+              "href": "quickref-sns.html"
+            },
+            {
+              "title": "Amazon SQS",
+              "href": "scenario-sqs-queue.html"
+            },
+            {
+              "title": "Amazon Timestream",
+              "href": "scenario-timestream-queue.html"
+            }
+          ]
+        },
+        {
+          "title": "Working with Windows stack templates",
+          "href": "cfn-windows-stacks.html",
+          "contents": [
+            {
+              "title": "Windows AMIs and templates",
+              "href": "cfn-windows-stacks-amis-and-templates.html"
+            },
+            {
+              "title": "Bootstrapping Windows stacks",
+              "href": "cfn-windows-stacks-bootstrapping.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Creating and managing stacks",
+      "href": "stacks.html",
+      "contents": [
+        {
+          "title": "Create a stack",
+          "href": "cfn-console-create-stack.html"
+        },
+        {
+          "title": "View stack information",
+          "href": "cfn-console-view-stack-data-resources.html"
+        },
+        {
+          "title": "Update your stack template",
+          "href": "using-cfn-updating-stacks-get-template.html"
+        },
+        {
+          "title": "Understand update behaviors of stack resources",
+          "href": "using-cfn-updating-stacks-update-behaviors.html"
+        },
+        {
+          "title": "Update stacks using change sets",
+          "href": "using-cfn-updating-stacks-changesets.html",
+          "contents": [
+            {
+              "title": "Create a change set",
+              "href": "using-cfn-updating-stacks-changesets-create.html"
+            },
+            {
+              "title": "View a change set",
+              "href": "using-cfn-updating-stacks-changesets-view.html"
+            },
+            {
+              "title": "Execute a change set",
+              "href": "using-cfn-updating-stacks-changesets-execute.html"
+            },
+            {
+              "title": "Delete a change set",
+              "href": "using-cfn-updating-stacks-changesets-delete.html"
+            },
+            {
+              "title": "Example change sets",
+              "href": "using-cfn-updating-stacks-changesets-samples.html"
+            },
+            {
+              "title": "Change sets for nested stacks",
+              "href": "change-sets-for-nested-stacks.html"
+            }
+          ]
+        },
+        {
+          "title": "Update stacks directly",
+          "href": "using-cfn-updating-stacks-direct.html"
+        },
+        {
+          "title": "Cancel a stack update",
+          "href": "using-cfn-stack-update-cancel.html"
+        },
+        {
+          "title": "Delete a stack",
+          "href": "cfn-console-delete-stack.html",
+          "contents": [
+            {
+              "title": "View deleted stacks",
+              "href": "cfn-console-view-deleted-stacks.html"
+            }
+          ]
+        },
+        {
+          "title": "Monitor stack progress",
+          "href": "monitor-stack-progress.html",
+          "contents": [
+            {
+              "title": "Understand stack creation events",
+              "href": "stack-resource-configuration-complete.html"
+            },
+            {
+              "title": "Monitor stack updates",
+              "href": "using-cfn-updating-stacks-monitor-stack.html"
+            },
+            {
+              "title": "Continue rolling back an update",
+              "href": "using-cfn-updating-stacks-continueupdaterollback.html"
+            },
+            {
+              "title": "Determine the cause of a stack failure",
+              "href": "determine-root-cause-for-stack-failures.html"
+            },
+            {
+              "title": "Stack failure options",
+              "href": "stack-failure-options.html"
+            }
+          ]
+        },
+        {
+          "title": "Roll back your stack on alarm breach",
+          "href": "using-cfn-rollback-triggers.html"
+        },
+        {
+          "title": "Detect unmanaged configuration changes to stacks and resources",
+          "href": "using-cfn-stack-drift.html",
+          "contents": [
+            {
+              "title": "Detect drift on an entire CloudFormation stack",
+              "href": "detect-drift-stack.html"
+            },
+            {
+              "title": "Detect drift on individual stack resources",
+              "href": "detect-drift-resource.html"
+            },
+            {
+              "title": "Resolve drift with an import operation",
+              "href": "resource-import-resolve-drift.html"
+            }
+          ]
+        },
+        {
+          "title": "Import AWS resources",
+          "href": "resource-import.html",
+          "contents": [
+            {
+              "title": "Creating a stack from existing resources",
+              "href": "resource-import-new-stack.html"
+            },
+            {
+              "title": "Importing existing resources into a stack",
+              "href": "resource-import-existing-stack.html"
+            },
+            {
+              "title": "Moving resources between stacks",
+              "href": "refactor-stacks.html"
+            },
+            {
+              "title": "Nesting an existing stack",
+              "href": "resource-import-nested-stacks.html"
+            },
+            {
+              "title": "Reverting an import operation",
+              "href": "resource-import-revert.html"
+            }
+          ]
+        },
+        {
+          "title": "Resource type support",
+          "href": "resource-import-supported-resources.html"
+        },
+        {
+          "title": "Create quick-create links for stacks",
+          "href": "cfn-console-create-stacks-quick-create-links.html"
+        },
+        {
+          "title": "Create, update, and delete stacks from the command line",
+          "href": "service_code_examples.html",
+          "contents": [
+            {
+              "title": "Upload local artifacts to an S3 bucket",
+              "href": "using-cfn-cli-package.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Managing stacks with StackSets",
+      "href": "what-is-cfnstacksets.html",
+      "contents": [
+        {
+          "title": "Region and permission requirements for stack set operations",
+          "href": "stacksets-prereqs.html",
+          "contents": [
+            {
+              "title": "Grant self-managed permissions",
+              "href": "stacksets-prereqs-self-managed.html"
+            },
+            {
+              "title": "Activate trusted access with Organizations",
+              "href": "stacksets-orgs-activate-trusted-access.html"
+            },
+            {
+              "title": "Register a delegated administrator",
+              "href": "stacksets-orgs-delegated-admin.html"
+            }
+          ]
+        },
+        {
+          "title": "StackSets operations",
+          "href": "stacksets-getting-started.html",
+          "contents": [
+            {
+              "title": "Create a stack set",
+              "href": "stacksets-getting-started-create.html"
+            },
+            {
+              "title": "Update your stack set",
+              "href": "stacksets-update.html"
+            },
+            {
+              "title": "Add stacks to a stack set",
+              "href": "stackinstances-create.html"
+            },
+            {
+              "title": "Choosing the Concurrency Mode",
+              "href": "concurrency-mode.html"
+            },
+            {
+              "title": "Override parameters on stack instances",
+              "href": "stackinstances-override.html"
+            },
+            {
+              "title": "Manage automatic deployments",
+              "href": "stacksets-orgs-manage-auto-deployment.html"
+            },
+            {
+              "title": "Delete stack instances from your stack set",
+              "href": "stackinstances-delete.html"
+            },
+            {
+              "title": "Delete a stack set",
+              "href": "stacksets-delete.html"
+            }
+          ]
+        },
+        {
+          "title": "Target account gates",
+          "href": "stacksets-account-gating.html"
+        },
+        {
+          "title": "Detecting stack set drift",
+          "href": "stacksets-drift.html"
+        },
+        {
+          "title": "Requirements for importing a stack into a stack set",
+          "href": "stacksets-import.html",
+          "contents": [
+            {
+              "title": "Self-managed stack import",
+              "href": "self-managed-import.html"
+            },
+            {
+              "title": "Service-managed stack import",
+              "href": "service-managed-import.html"
+            }
+          ]
+        },
+        {
+          "title": "Account level targets",
+          "href": "account-level-targets.html"
+        },
+        {
+          "title": "Best practices",
+          "href": "stacksets-bestpractices.html"
+        },
+        {
+          "title": "Sample templates",
+          "href": "stacksets-sampletemplates.html"
+        },
+        {
+          "title": "Troubleshooting",
+          "href": "stacksets-troubleshooting.html"
+        }
+      ]
+    },
+    {
+      "title": "Syncing stacks with Git source code",
+      "href": "git-sync.html",
+      "contents": [
+        {
+          "title": "How Git sync works",
+          "href": "git-sync-concepts-terms.html"
+        },
+        {
+          "title": "Prerequisites",
+          "href": "git-sync-prereq.html"
+        },
+        {
+          "title": "Create a stack from repository source code",
+          "href": "git-sync-walkthrough.html"
+        },
+        {
+          "title": "Status dashboard",
+          "href": "git-sync-status.html"
+        }
+      ]
+    },
+    {
+      "title": "Managing extensions with the CloudFormation registry",
+      "href": "registry.html",
+      "contents": [
+        {
+          "title": "Using private extensions",
+          "href": "registry-private.html"
+        },
+        {
+          "title": "Using public extensions",
+          "href": "registry-public.html"
+        }
+      ]
+    },
+    {
+      "title": "Continuous delivery",
+      "href": "continuous-delivery-codepipeline.html",
+      "contents": [
+        {
+          "title": "Walkthrough: Building a pipeline for test and production stacks",
+          "href": "continuous-delivery-codepipeline-basic-walkthrough.html"
+        },
+        {
+          "title": "Configuration properties reference",
+          "href": "continuous-delivery-codepipeline-action-reference.html"
+        },
+        {
+          "title": "AWS CloudFormation artifacts",
+          "href": "continuous-delivery-codepipeline-cfn-artifacts.html"
+        },
+        {
+          "title": "Using parameter override functions with CodePipeline pipelines",
+          "href": "continuous-delivery-codepipeline-parameter-override-functions.html"
+        }
+      ]
+    },
+    {
+      "title": "Template reference",
+      "href": "template-reference.html",
+      "contents": [
+        {
+          "title": "Resource and property reference",
+          "href": "aws-template-resource-type-ref.html",
+          "contents": [
+            {
+              "title": "AWS Amplify Console",
+              "href": "AWS_Amplify.html",
+              "include_contents": "toc-AWS_Amplify.json"
+            },
+            {
+              "title": "AWS Amplify UI Builder",
+              "href": "AWS_AmplifyUIBuilder.html",
+              "include_contents": "toc-AWS_AmplifyUIBuilder.json"
+            },
+            {
+              "title": "Amazon API Gateway",
+              "href": "AWS_ApiGateway.html",
+              "include_contents": "toc-AWS_ApiGateway.json"
+            },
+            {
+              "title": "Amazon API Gateway V2",
+              "href": "AWS_ApiGatewayV2.html",
+              "include_contents": "toc-AWS_ApiGatewayV2.json"
+            },
+            {
+              "title": "AWS AppConfig",
+              "href": "AWS_AppConfig.html",
+              "include_contents": "toc-AWS_AppConfig.json"
+            },
+            {
+              "title": "Amazon AppFlow",
+              "href": "AWS_AppFlow.html",
+              "include_contents": "toc-AWS_AppFlow.json"
+            },
+            {
+              "title": "Amazon AppIntegrations",
+              "href": "AWS_AppIntegrations.html",
+              "include_contents": "toc-AWS_AppIntegrations.json"
+            },
+            {
+              "title": "Application Auto Scaling",
+              "href": "AWS_ApplicationAutoScaling.html",
+              "include_contents": "toc-AWS_ApplicationAutoScaling.json"
+            },
+            {
+              "title": "AWS App Mesh",
+              "href": "AWS_AppMesh.html",
+              "include_contents": "toc-AWS_AppMesh.json"
+            },
+            {
+              "title": "AWS App Runner",
+              "href": "AWS_AppRunner.html",
+              "include_contents": "toc-AWS_AppRunner.json"
+            },
+            {
+              "title": "Amazon AppStream 2.0",
+              "href": "AWS_AppStream.html",
+              "include_contents": "toc-AWS_AppStream.json"
+            },
+            {
+              "title": "AWS AppSync",
+              "href": "AWS_AppSync.html",
+              "include_contents": "toc-AWS_AppSync.json"
+            },
+            {
+              "title": "AWS ARC - Zonal Shift",
+              "href": "AWS_ARCZonalShift.html",
+              "include_contents": "toc-AWS_ARCZonalShift.json"
+            },
+            {
+              "title": "Alexa Skills Kit",
+              "href": "Alexa_ASK.html",
+              "include_contents": "toc-Alexa_ASK.json"
+            },
+            {
+              "title": "Amazon Athena",
+              "href": "AWS_Athena.html",
+              "include_contents": "toc-AWS_Athena.json"
+            },
+            {
+              "title": "AWS Audit Manager",
+              "href": "AWS_AuditManager.html",
+              "include_contents": "toc-AWS_AuditManager.json"
+            },
+            {
+              "title": "AWS Auto Scaling",
+              "href": "AWS_AutoScalingPlans.html",
+              "include_contents": "toc-AWS_AutoScalingPlans.json"
+            },
+            {
+              "title": "AWS B2B Data Interchange",
+              "href": "AWS_B2BI.html",
+              "include_contents": "toc-AWS_B2BI.json"
+            },
+            {
+              "title": "AWS Backup",
+              "href": "AWS_Backup.html",
+              "include_contents": "toc-AWS_Backup.json"
+            },
+            {
+              "title": "AWS Backup gateway",
+              "href": "AWS_BackupGateway.html",
+              "include_contents": "toc-AWS_BackupGateway.json"
+            },
+            {
+              "title": "AWS Batch",
+              "href": "AWS_Batch.html",
+              "include_contents": "toc-AWS_Batch.json"
+            },
+            {
+              "title": "Amazon Bedrock",
+              "href": "AWS_Bedrock.html",
+              "include_contents": "toc-AWS_Bedrock.json"
+            },
+            {
+              "title": "AWS Billing Conductor",
+              "href": "AWS_BillingConductor.html",
+              "include_contents": "toc-AWS_BillingConductor.json"
+            },
+            {
+              "title": "AWS Budgets",
+              "href": "AWS_Budgets.html",
+              "include_contents": "toc-AWS_Budgets.json"
+            },
+            {
+              "title": "AWS Certificate Manager",
+              "href": "AWS_CertificateManager.html",
+              "include_contents": "toc-AWS_CertificateManager.json"
+            },
+            {
+              "title": "AWS Chatbot",
+              "href": "AWS_Chatbot.html",
+              "include_contents": "toc-AWS_Chatbot.json"
+            },
+            {
+              "title": "AWS Clean Rooms",
+              "href": "AWS_CleanRooms.html",
+              "include_contents": "toc-AWS_CleanRooms.json"
+            },
+            {
+              "title": "CleanRoomsML",
+              "href": "AWS_CleanRoomsML.html",
+              "include_contents": "toc-AWS_CleanRoomsML.json"
+            },
+            {
+              "title": "AWS Cloud9",
+              "href": "AWS_Cloud9.html",
+              "include_contents": "toc-AWS_Cloud9.json"
+            },
+            {
+              "title": "AWS CloudFormation",
+              "href": "AWS_CloudFormation.html",
+              "include_contents": "toc-AWS_CloudFormation.json"
+            },
+            {
+              "title": "Amazon CloudFront",
+              "href": "AWS_CloudFront.html",
+              "include_contents": "toc-AWS_CloudFront.json"
+            },
+            {
+              "title": "AWS Cloud Map",
+              "href": "AWS_ServiceDiscovery.html",
+              "include_contents": "toc-AWS_ServiceDiscovery.json"
+            },
+            {
+              "title": "AWS CloudTrail",
+              "href": "AWS_CloudTrail.html",
+              "include_contents": "toc-AWS_CloudTrail.json"
+            },
+            {
+              "title": "Amazon CloudWatch",
+              "href": "AWS_CloudWatch.html",
+              "include_contents": "toc-AWS_CloudWatch.json"
+            },
+            {
+              "title": "Amazon CloudWatch Application Insights",
+              "href": "AWS_ApplicationInsights.html",
+              "include_contents": "toc-AWS_ApplicationInsights.json"
+            },
+            {
+              "title": "CloudWatch Application Signals",
+              "href": "AWS_ApplicationSignals.html",
+              "include_contents": "toc-AWS_ApplicationSignals.json"
+            },
+            {
+              "title": "Amazon CloudWatch Evidently",
+              "href": "AWS_Evidently.html",
+              "include_contents": "toc-AWS_Evidently.json"
+            },
+            {
+              "title": "Amazon CloudWatch Internet Monitor",
+              "href": "AWS_InternetMonitor.html",
+              "include_contents": "toc-AWS_InternetMonitor.json"
+            },
+            {
+              "title": "Amazon CloudWatch Logs",
+              "href": "AWS_Logs.html",
+              "include_contents": "toc-AWS_Logs.json"
+            },
+            {
+              "title": "Amazon CloudWatch Synthetics",
+              "href": "AWS_Synthetics.html",
+              "include_contents": "toc-AWS_Synthetics.json"
+            },
+            {
+              "title": "AWS CodeArtifact",
+              "href": "AWS_CodeArtifact.html",
+              "include_contents": "toc-AWS_CodeArtifact.json"
+            },
+            {
+              "title": "AWS CodeBuild",
+              "href": "AWS_CodeBuild.html",
+              "include_contents": "toc-AWS_CodeBuild.json"
+            },
+            {
+              "title": "AWS CodeCommit",
+              "href": "AWS_CodeCommit.html",
+              "include_contents": "toc-AWS_CodeCommit.json"
+            },
+            {
+              "title": "AWS CodeConnections",
+              "href": "AWS_CodeConnections.html",
+              "include_contents": "toc-AWS_CodeConnections.json"
+            },
+            {
+              "title": "AWS CodeDeploy",
+              "href": "AWS_CodeDeploy.html",
+              "include_contents": "toc-AWS_CodeDeploy.json"
+            },
+            {
+              "title": "Amazon CodeGuru Profiler",
+              "href": "AWS_CodeGuruProfiler.html",
+              "include_contents": "toc-AWS_CodeGuruProfiler.json"
+            },
+            {
+              "title": "Amazon CodeGuru Reviewer",
+              "href": "AWS_CodeGuruReviewer.html",
+              "include_contents": "toc-AWS_CodeGuruReviewer.json"
+            },
+            {
+              "title": "AWS CodePipeline",
+              "href": "AWS_CodePipeline.html",
+              "include_contents": "toc-AWS_CodePipeline.json"
+            },
+            {
+              "title": "AWS CodeStar",
+              "href": "AWS_CodeStar.html",
+              "include_contents": "toc-AWS_CodeStar.json"
+            },
+            {
+              "title": "AWS CodeStar Connections",
+              "href": "AWS_CodeStarConnections.html",
+              "include_contents": "toc-AWS_CodeStarConnections.json"
+            },
+            {
+              "title": "AWS CodeStar Notifications",
+              "href": "AWS_CodeStarNotifications.html",
+              "include_contents": "toc-AWS_CodeStarNotifications.json"
+            },
+            {
+              "title": "Amazon Cognito",
+              "href": "AWS_Cognito.html",
+              "include_contents": "toc-AWS_Cognito.json"
+            },
+            {
+              "title": "Amazon Comprehend",
+              "href": "AWS_Comprehend.html",
+              "include_contents": "toc-AWS_Comprehend.json"
+            },
+            {
+              "title": "AWS Config",
+              "href": "AWS_Config.html",
+              "include_contents": "toc-AWS_Config.json"
+            },
+            {
+              "title": "Amazon Connect",
+              "href": "AWS_Connect.html",
+              "include_contents": "toc-AWS_Connect.json"
+            },
+            {
+              "title": "Amazon Connect Outbound Campaigns",
+              "href": "AWS_ConnectCampaigns.html",
+              "include_contents": "toc-AWS_ConnectCampaigns.json"
+            },
+            {
+              "title": "AWS Control Tower",
+              "href": "AWS_ControlTower.html",
+              "include_contents": "toc-AWS_ControlTower.json"
+            },
+            {
+              "title": "Amazon Connect Customer Profiles",
+              "href": "AWS_CustomerProfiles.html",
+              "include_contents": "toc-AWS_CustomerProfiles.json"
+            },
+            {
+              "title": "AWS Cost Explorer",
+              "href": "AWS_CE.html",
+              "include_contents": "toc-AWS_CE.json"
+            },
+            {
+              "title": "AWS Cost and Usage Report",
+              "href": "AWS_CUR.html",
+              "include_contents": "toc-AWS_CUR.json"
+            },
+            {
+              "title": "AWS Data Exports",
+              "href": "AWS_BCMDataExports.html",
+              "include_contents": "toc-AWS_BCMDataExports.json"
+            },
+            {
+              "title": "Amazon Data Lifecycle Manager",
+              "href": "AWS_DLM.html",
+              "include_contents": "toc-AWS_DLM.json"
+            },
+            {
+              "title": "AWS Data Pipeline",
+              "href": "AWS_DataPipeline.html",
+              "include_contents": "toc-AWS_DataPipeline.json"
+            },
+            {
+              "title": "AWS DataSync",
+              "href": "AWS_DataSync.html",
+              "include_contents": "toc-AWS_DataSync.json"
+            },
+            {
+              "title": "Amazon DataZone",
+              "href": "AWS_DataZone.html",
+              "include_contents": "toc-AWS_DataZone.json"
+            },
+            {
+              "title": "AWS Deadline Cloud",
+              "href": "AWS_Deadline.html",
+              "include_contents": "toc-AWS_Deadline.json"
+            },
+            {
+              "title": "DynamoDB Accelerator",
+              "href": "AWS_DAX.html",
+              "include_contents": "toc-AWS_DAX.json"
+            },
+            {
+              "title": "Amazon Detective",
+              "href": "AWS_Detective.html",
+              "include_contents": "toc-AWS_Detective.json"
+            },
+            {
+              "title": "AWS Device Farm",
+              "href": "AWS_DeviceFarm.html",
+              "include_contents": "toc-AWS_DeviceFarm.json"
+            },
+            {
+              "title": "Amazon DevOps Guru",
+              "href": "AWS_DevOpsGuru.html",
+              "include_contents": "toc-AWS_DevOpsGuru.json"
+            },
+            {
+              "title": "AWS Directory Service",
+              "href": "AWS_DirectoryService.html",
+              "include_contents": "toc-AWS_DirectoryService.json"
+            },
+            {
+              "title": "AWS Database Migration Service",
+              "href": "AWS_DMS.html",
+              "include_contents": "toc-AWS_DMS.json"
+            },
+            {
+              "title": "Amazon DocumentDB (with MongoDB compatibility)",
+              "href": "AWS_DocDB.html",
+              "include_contents": "toc-AWS_DocDB.json"
+            },
+            {
+              "title": "Amazon DocumentDB (with MongoDB compatibility) elastic",
+              "href": "AWS_DocDBElastic.html",
+              "include_contents": "toc-AWS_DocDBElastic.json"
+            },
+            {
+              "title": "Amazon DynamoDB",
+              "href": "AWS_DynamoDB.html",
+              "include_contents": "toc-AWS_DynamoDB.json"
+            },
+            {
+              "title": "Amazon EC2",
+              "href": "AWS_EC2.html",
+              "include_contents": "toc-AWS_EC2.json"
+            },
+            {
+              "title": "Amazon EC2 Auto Scaling",
+              "href": "AWS_AutoScaling.html",
+              "include_contents": "toc-AWS_AutoScaling.json"
+            },
+            {
+              "title": "Amazon ECR",
+              "href": "AWS_ECR.html",
+              "include_contents": "toc-AWS_ECR.json"
+            },
+            {
+              "title": "Amazon ECS",
+              "href": "AWS_ECS.html",
+              "include_contents": "toc-AWS_ECS.json"
+            },
+            {
+              "title": "Amazon Elastic File System",
+              "href": "AWS_EFS.html",
+              "include_contents": "toc-AWS_EFS.json"
+            },
+            {
+              "title": "Amazon Elastic Kubernetes Service",
+              "href": "AWS_EKS.html",
+              "include_contents": "toc-AWS_EKS.json"
+            },
+            {
+              "title": "AWS Elastic Beanstalk",
+              "href": "AWS_ElasticBeanstalk.html",
+              "include_contents": "toc-AWS_ElasticBeanstalk.json"
+            },
+            {
+              "title": "Elastic Load Balancing",
+              "href": "AWS_ElasticLoadBalancing.html",
+              "include_contents": "toc-AWS_ElasticLoadBalancing.json"
+            },
+            {
+              "title": "Elastic Load Balancing V2",
+              "href": "AWS_ElasticLoadBalancingV2.html",
+              "include_contents": "toc-AWS_ElasticLoadBalancingV2.json"
+            },
+            {
+              "title": "Amazon EMR",
+              "href": "AWS_EMR.html",
+              "include_contents": "toc-AWS_EMR.json"
+            },
+            {
+              "title": "Amazon EMR Serverless",
+              "href": "AWS_EMRServerless.html",
+              "include_contents": "toc-AWS_EMRServerless.json"
+            },
+            {
+              "title": "Amazon EMR on EKS",
+              "href": "AWS_EMRContainers.html",
+              "include_contents": "toc-AWS_EMRContainers.json"
+            },
+            {
+              "title": "Amazon ElastiCache",
+              "href": "AWS_ElastiCache.html",
+              "include_contents": "toc-AWS_ElastiCache.json"
+            },
+            {
+              "title": "AWS Entity Resolution",
+              "href": "AWS_EntityResolution.html",
+              "include_contents": "toc-AWS_EntityResolution.json"
+            },
+            {
+              "title": "Amazon EventBridge",
+              "href": "AWS_Events.html",
+              "include_contents": "toc-AWS_Events.json"
+            },
+            {
+              "title": "Amazon EventBridge Pipes",
+              "href": "AWS_Pipes.html",
+              "include_contents": "toc-AWS_Pipes.json"
+            },
+            {
+              "title": "Amazon EventBridge Scheduler",
+              "href": "AWS_Scheduler.html",
+              "include_contents": "toc-AWS_Scheduler.json"
+            },
+            {
+              "title": "Amazon EventBridge Schemas",
+              "href": "AWS_EventSchemas.html",
+              "include_contents": "toc-AWS_EventSchemas.json"
+            },
+            {
+              "title": "Amazon FinSpace schemas",
+              "href": "AWS_FinSpace.html",
+              "include_contents": "toc-AWS_FinSpace.json"
+            },
+            {
+              "title": "AWS Fault Injection Service",
+              "href": "AWS_FIS.html",
+              "include_contents": "toc-AWS_FIS.json"
+            },
+            {
+              "title": "AWS Firewall Manager",
+              "href": "AWS_FMS.html",
+              "include_contents": "toc-AWS_FMS.json"
+            },
+            {
+              "title": "Amazon Forecast",
+              "href": "AWS_Forecast.html",
+              "include_contents": "toc-AWS_Forecast.json"
+            },
+            {
+              "title": "Amazon Fraud Detector",
+              "href": "AWS_FraudDetector.html",
+              "include_contents": "toc-AWS_FraudDetector.json"
+            },
+            {
+              "title": "Amazon FSx",
+              "href": "AWS_FSx.html",
+              "include_contents": "toc-AWS_FSx.json"
+            },
+            {
+              "title": "Amazon GameLift",
+              "href": "AWS_GameLift.html",
+              "include_contents": "toc-AWS_GameLift.json"
+            },
+            {
+              "title": "AWS Global Accelerator",
+              "href": "AWS_GlobalAccelerator.html",
+              "include_contents": "toc-AWS_GlobalAccelerator.json"
+            },
+            {
+              "title": "AWS Glue",
+              "href": "AWS_Glue.html",
+              "include_contents": "toc-AWS_Glue.json"
+            },
+            {
+              "title": "AWS Glue DataBrew",
+              "href": "AWS_DataBrew.html",
+              "include_contents": "toc-AWS_DataBrew.json"
+            },
+            {
+              "title": "Amazon Managed Grafana",
+              "href": "AWS_Grafana.html",
+              "include_contents": "toc-AWS_Grafana.json"
+            },
+            {
+              "title": "AWS Ground Station",
+              "href": "AWS_GroundStation.html",
+              "include_contents": "toc-AWS_GroundStation.json"
+            },
+            {
+              "title": "Amazon GuardDuty",
+              "href": "AWS_GuardDuty.html",
+              "include_contents": "toc-AWS_GuardDuty.json"
+            },
+            {
+              "title": "AWS HealthImaging",
+              "href": "AWS_HealthImaging.html",
+              "include_contents": "toc-AWS_HealthImaging.json"
+            },
+            {
+              "title": "AWS HealthLake",
+              "href": "AWS_HealthLake.html",
+              "include_contents": "toc-AWS_HealthLake.json"
+            },
+            {
+              "title": "AWS Identity and Access Management",
+              "href": "AWS_IAM.html",
+              "include_contents": "toc-AWS_IAM.json"
+            },
+            {
+              "title": "AWS IAM Identity Center",
+              "href": "AWS_SSO.html",
+              "include_contents": "toc-AWS_SSO.json"
+            },
+            {
+              "title": "Identity Store",
+              "href": "AWS_IdentityStore.html",
+              "include_contents": "toc-AWS_IdentityStore.json"
+            },
+            {
+              "title": "AWS Identity and Access Management Access Analyzer",
+              "href": "AWS_AccessAnalyzer.html",
+              "include_contents": "toc-AWS_AccessAnalyzer.json"
+            },
+            {
+              "title": "EC2 Image Builder",
+              "href": "AWS_ImageBuilder.html",
+              "include_contents": "toc-AWS_ImageBuilder.json"
+            },
+            {
+              "title": "AWS Systems Manager Incident Manager",
+              "href": "AWS_SSMIncidents.html",
+              "include_contents": "toc-AWS_SSMIncidents.json"
+            },
+            {
+              "title": "AWS Systems Manager Incident Manager Contacts",
+              "href": "AWS_SSMContacts.html",
+              "include_contents": "toc-AWS_SSMContacts.json"
+            },
+            {
+              "title": "Amazon Inspector classic",
+              "href": "AWS_Inspector.html",
+              "include_contents": "toc-AWS_Inspector.json"
+            },
+            {
+              "title": "Amazon Inspector",
+              "href": "AWS_InspectorV2.html",
+              "include_contents": "toc-AWS_InspectorV2.json"
+            },
+            {
+              "title": "AWS IoT",
+              "href": "AWS_IoT.html",
+              "include_contents": "toc-AWS_IoT.json"
+            },
+            {
+              "title": "AWS IoT 1-Click",
+              "href": "AWS_IoT1Click.html",
+              "include_contents": "toc-AWS_IoT1Click.json"
+            },
+            {
+              "title": "AWS IoT Analytics",
+              "href": "AWS_IoTAnalytics.html",
+              "include_contents": "toc-AWS_IoTAnalytics.json"
+            },
+            {
+              "title": "AWS IoT Core Device Advisor",
+              "href": "AWS_IoTCoreDeviceAdvisor.html",
+              "include_contents": "toc-AWS_IoTCoreDeviceAdvisor.json"
+            },
+            {
+              "title": "AWS IoT Events",
+              "href": "AWS_IoTEvents.html",
+              "include_contents": "toc-AWS_IoTEvents.json"
+            },
+            {
+              "title": "Fleet Hub for AWS IoT Device Management",
+              "href": "AWS_IoTFleetHub.html",
+              "include_contents": "toc-AWS_IoTFleetHub.json"
+            },
+            {
+              "title": "AWS IoT FleetWise",
+              "href": "AWS_IoTFleetWise.html",
+              "include_contents": "toc-AWS_IoTFleetWise.json"
+            },
+            {
+              "title": "AWS IoT Greengrass",
+              "href": "AWS_Greengrass.html",
+              "include_contents": "toc-AWS_Greengrass.json"
+            },
+            {
+              "title": "AWS IoT Greengrass Version 2",
+              "href": "AWS_GreengrassV2.html",
+              "include_contents": "toc-AWS_GreengrassV2.json"
+            },
+            {
+              "title": "AWS IoT SiteWise",
+              "href": "AWS_IoTSiteWise.html",
+              "include_contents": "toc-AWS_IoTSiteWise.json"
+            },
+            {
+              "title": "AWS IoT TwinMaker",
+              "href": "AWS_IoTTwinMaker.html",
+              "include_contents": "toc-AWS_IoTTwinMaker.json"
+            },
+            {
+              "title": "AWS IoT Wireless",
+              "href": "AWS_IoTWireless.html",
+              "include_contents": "toc-AWS_IoTWireless.json"
+            },
+            {
+              "title": "Amazon IVS",
+              "href": "AWS_IVS.html",
+              "include_contents": "toc-AWS_IVS.json"
+            },
+            {
+              "title": "Amazon IVS Chat",
+              "href": "AWS_IVSChat.html",
+              "include_contents": "toc-AWS_IVSChat.json"
+            },
+            {
+              "title": "Amazon Kendra",
+              "href": "AWS_Kendra.html",
+              "include_contents": "toc-AWS_Kendra.json"
+            },
+            {
+              "title": "Amazon Kendra Intelligent Ranking",
+              "href": "AWS_KendraRanking.html",
+              "include_contents": "toc-AWS_KendraRanking.json"
+            },
+            {
+              "title": "Amazon Keyspaces (for Apache Cassandra)",
+              "href": "AWS_Cassandra.html",
+              "include_contents": "toc-AWS_Cassandra.json"
+            },
+            {
+              "title": "Amazon Kinesis",
+              "href": "AWS_Kinesis.html",
+              "include_contents": "toc-AWS_Kinesis.json"
+            },
+            {
+              "title": "Amazon Managed Service for Apache Flink",
+              "href": "AWS_KinesisAnalytics.html",
+              "include_contents": "toc-AWS_KinesisAnalytics.json"
+            },
+            {
+              "title": "Amazon Managed Service for Apache Flink V2",
+              "href": "AWS_KinesisAnalyticsV2.html",
+              "include_contents": "toc-AWS_KinesisAnalyticsV2.json"
+            },
+            {
+              "title": "Amazon Data Firehose",
+              "href": "AWS_KinesisFirehose.html",
+              "include_contents": "toc-AWS_KinesisFirehose.json"
+            },
+            {
+              "title": "Amazon Kinesis Video Streams",
+              "href": "AWS_KinesisVideo.html",
+              "include_contents": "toc-AWS_KinesisVideo.json"
+            },
+            {
+              "title": "AWS Key Management Service",
+              "href": "AWS_KMS.html",
+              "include_contents": "toc-AWS_KMS.json"
+            },
+            {
+              "title": "AWS Lake Formation",
+              "href": "AWS_LakeFormation.html",
+              "include_contents": "toc-AWS_LakeFormation.json"
+            },
+            {
+              "title": "AWS Lambda",
+              "href": "AWS_Lambda.html",
+              "include_contents": "toc-AWS_Lambda.json"
+            },
+            {
+              "title": "AWS Launch Wizard",
+              "href": "AWS_LaunchWizard.html",
+              "include_contents": "toc-AWS_LaunchWizard.json"
+            },
+            {
+              "title": "Amazon Lex",
+              "href": "AWS_Lex.html",
+              "include_contents": "toc-AWS_Lex.json"
+            },
+            {
+              "title": "AWS License Manager",
+              "href": "AWS_LicenseManager.html",
+              "include_contents": "toc-AWS_LicenseManager.json"
+            },
+            {
+              "title": "Amazon Lightsail",
+              "href": "AWS_Lightsail.html",
+              "include_contents": "toc-AWS_Lightsail.json"
+            },
+            {
+              "title": "Amazon Location Service",
+              "href": "AWS_Location.html",
+              "include_contents": "toc-AWS_Location.json"
+            },
+            {
+              "title": "Amazon Lookout for Equipment",
+              "href": "AWS_LookoutEquipment.html",
+              "include_contents": "toc-AWS_LookoutEquipment.json"
+            },
+            {
+              "title": "Amazon Lookout for Metrics",
+              "href": "AWS_LookoutMetrics.html",
+              "include_contents": "toc-AWS_LookoutMetrics.json"
+            },
+            {
+              "title": "Amazon Lookout for Vision",
+              "href": "AWS_LookoutVision.html",
+              "include_contents": "toc-AWS_LookoutVision.json"
+            },
+            {
+              "title": "AWS Mainframe Modernization",
+              "href": "AWS_M2.html",
+              "include_contents": "toc-AWS_M2.json"
+            },
+            {
+              "title": "AWS Mainframe Modernization Application Testing",
+              "href": "AWS_AppTest.html",
+              "include_contents": "toc-AWS_AppTest.json"
+            },
+            {
+              "title": "Amazon Macie",
+              "href": "AWS_Macie.html",
+              "include_contents": "toc-AWS_Macie.json"
+            },
+            {
+              "title": "Amazon Managed Blockchain",
+              "href": "AWS_ManagedBlockchain.html",
+              "include_contents": "toc-AWS_ManagedBlockchain.json"
+            },
+            {
+              "title": "AWS Elemental MediaConnect",
+              "href": "AWS_MediaConnect.html",
+              "include_contents": "toc-AWS_MediaConnect.json"
+            },
+            {
+              "title": "AWS Elemental MediaConvert",
+              "href": "AWS_MediaConvert.html",
+              "include_contents": "toc-AWS_MediaConvert.json"
+            },
+            {
+              "title": "AWS Elemental MediaLive",
+              "href": "AWS_MediaLive.html",
+              "include_contents": "toc-AWS_MediaLive.json"
+            },
+            {
+              "title": "AWS Elemental MediaPackage",
+              "href": "AWS_MediaPackage.html",
+              "include_contents": "toc-AWS_MediaPackage.json"
+            },
+            {
+              "title": "AWS Elemental MediaPackage V2",
+              "href": "AWS_MediaPackageV2.html",
+              "include_contents": "toc-AWS_MediaPackageV2.json"
+            },
+            {
+              "title": "AWS Elemental MediaTailor",
+              "href": "AWS_MediaTailor.html",
+              "include_contents": "toc-AWS_MediaTailor.json"
+            },
+            {
+              "title": "AWS Elemental MediaStore",
+              "href": "AWS_MediaStore.html",
+              "include_contents": "toc-AWS_MediaStore.json"
+            },
+            {
+              "title": "Amazon MQ",
+              "href": "AWS_AmazonMQ.html",
+              "include_contents": "toc-AWS_AmazonMQ.json"
+            },
+            {
+              "title": "Amazon MemoryDB",
+              "href": "AWS_MemoryDB.html",
+              "include_contents": "toc-AWS_MemoryDB.json"
+            },
+            {
+              "title": "Amazon Managed Streaming for Apache Kafka",
+              "href": "AWS_MSK.html",
+              "include_contents": "toc-AWS_MSK.json"
+            },
+            {
+              "title": "Amazon Managed Streaming for Apache Kafka Connect",
+              "href": "AWS_KafkaConnect.html",
+              "include_contents": "toc-AWS_KafkaConnect.json"
+            },
+            {
+              "title": "Amazon Managed Workflows for Apache Airflow",
+              "href": "AWS_MWAA.html",
+              "include_contents": "toc-AWS_MWAA.json"
+            },
+            {
+              "title": "Amazon Neptune",
+              "href": "AWS_Neptune.html",
+              "include_contents": "toc-AWS_Neptune.json"
+            },
+            {
+              "title": "Amazon Neptune Analytics",
+              "href": "AWS_NeptuneGraph.html",
+              "include_contents": "toc-AWS_NeptuneGraph.json"
+            },
+            {
+              "title": "AWS Network Firewall",
+              "href": "AWS_NetworkFirewall.html",
+              "include_contents": "toc-AWS_NetworkFirewall.json"
+            },
+            {
+              "title": "AWS Network Manager",
+              "href": "AWS_NetworkManager.html",
+              "include_contents": "toc-AWS_NetworkManager.json"
+            },
+            {
+              "title": "Amazon Nimble Studio",
+              "href": "AWS_NimbleStudio.html",
+              "include_contents": "toc-AWS_NimbleStudio.json"
+            },
+            {
+              "title": "Observability Access Manager (OAM)",
+              "href": "AWS_Oam.html",
+              "include_contents": "toc-AWS_Oam.json"
+            },
+            {
+              "title": "AWS HealthOmics",
+              "href": "AWS_Omics.html",
+              "include_contents": "toc-AWS_Omics.json"
+            },
+            {
+              "title": "Amazon OpenSearch Ingestion",
+              "href": "AWS_OSIS.html",
+              "include_contents": "toc-AWS_OSIS.json"
+            },
+            {
+              "title": "Amazon OpenSearch Service",
+              "href": "AWS_OpenSearchService.html",
+              "include_contents": "toc-AWS_OpenSearchService.json"
+            },
+            {
+              "title": "Amazon OpenSearch Service (legacy Elasticsearch resource)",
+              "href": "AWS_Elasticsearch.html",
+              "include_contents": "toc-AWS_Elasticsearch.json"
+            },
+            {
+              "title": "Amazon OpenSearch Serverless",
+              "href": "AWS_OpenSearchServerless.html",
+              "include_contents": "toc-AWS_OpenSearchServerless.json"
+            },
+            {
+              "title": "AWS OpsWorks",
+              "href": "AWS_OpsWorks.html",
+              "include_contents": "toc-AWS_OpsWorks.json"
+            },
+            {
+              "title": "AWS OpsWorks CM",
+              "href": "AWS_OpsWorksCM.html",
+              "include_contents": "toc-AWS_OpsWorksCM.json"
+            },
+            {
+              "title": "AWS Organizations",
+              "href": "AWS_Organizations.html",
+              "include_contents": "toc-AWS_Organizations.json"
+            },
+            {
+              "title": "AWS Panorama",
+              "href": "AWS_Panorama.html",
+              "include_contents": "toc-AWS_Panorama.json"
+            },
+            {
+              "title": "AWS Payment Cryptography",
+              "href": "AWS_PaymentCryptography.html",
+              "include_contents": "toc-AWS_PaymentCryptography.json"
+            },
+            {
+              "title": "Amazon Personalize",
+              "href": "AWS_Personalize.html",
+              "include_contents": "toc-AWS_Personalize.json"
+            },
+            {
+              "title": "Amazon Pinpoint",
+              "href": "AWS_Pinpoint.html",
+              "include_contents": "toc-AWS_Pinpoint.json"
+            },
+            {
+              "title": "Amazon Pinpoint Email",
+              "href": "AWS_PinpointEmail.html",
+              "include_contents": "toc-AWS_PinpointEmail.json"
+            },
+            {
+              "title": "AWS Private Certificate Authority",
+              "href": "AWS_ACMPCA.html",
+              "include_contents": "toc-AWS_ACMPCA.json"
+            },
+            {
+              "title": "AWS Private Certificate Authority for Active Directory",
+              "href": "AWS_PCAConnectorAD.html",
+              "include_contents": "toc-AWS_PCAConnectorAD.json"
+            },
+            {
+              "title": "AWS Proton",
+              "href": "AWS_Proton.html",
+              "include_contents": "toc-AWS_Proton.json"
+            },
+            {
+              "title": "Amazon Managed Service for Prometheus",
+              "href": "AWS_APS.html",
+              "include_contents": "toc-AWS_APS.json"
+            },
+            {
+              "title": "Amazon Q Business",
+              "href": "AWS_QBusiness.html",
+              "include_contents": "toc-AWS_QBusiness.json"
+            },
+            {
+              "title": "Amazon QLDB",
+              "href": "AWS_QLDB.html",
+              "include_contents": "toc-AWS_QLDB.json"
+            },
+            {
+              "title": "Amazon QuickSight",
+              "href": "AWS_QuickSight.html",
+              "include_contents": "toc-AWS_QuickSight.json"
+            },
+            {
+              "title": "AWS Resource Access Manager",
+              "href": "AWS_RAM.html",
+              "include_contents": "toc-AWS_RAM.json"
+            },
+            {
+              "title": "Amazon Relational Database Service",
+              "href": "AWS_RDS.html",
+              "include_contents": "toc-AWS_RDS.json"
+            },
+            {
+              "title": "Amazon Redshift",
+              "href": "AWS_Redshift.html",
+              "include_contents": "toc-AWS_Redshift.json"
+            },
+            {
+              "title": "Amazon Redshift Serverless",
+              "href": "AWS_RedshiftServerless.html",
+              "include_contents": "toc-AWS_RedshiftServerless.json"
+            },
+            {
+              "title": "AWS Migration Hub Refactor Spaces",
+              "href": "AWS_RefactorSpaces.html",
+              "include_contents": "toc-AWS_RefactorSpaces.json"
+            },
+            {
+              "title": "Amazon Rekognition",
+              "href": "AWS_Rekognition.html",
+              "include_contents": "toc-AWS_Rekognition.json"
+            },
+            {
+              "title": "AWS Resilience Hub",
+              "href": "AWS_ResilienceHub.html",
+              "include_contents": "toc-AWS_ResilienceHub.json"
+            },
+            {
+              "title": "AWS Resource Explorer",
+              "href": "AWS_ResourceExplorer2.html",
+              "include_contents": "toc-AWS_ResourceExplorer2.json"
+            },
+            {
+              "title": "AWS Resource Groups",
+              "href": "AWS_ResourceGroups.html",
+              "include_contents": "toc-AWS_ResourceGroups.json"
+            },
+            {
+              "title": "AWS RoboMaker",
+              "href": "AWS_RoboMaker.html",
+              "include_contents": "toc-AWS_RoboMaker.json"
+            },
+            {
+              "title": "IAM Roles Anywhere",
+              "href": "AWS_RolesAnywhere.html",
+              "include_contents": "toc-AWS_RolesAnywhere.json"
+            },
+            {
+              "title": "Amazon Route 53",
+              "href": "AWS_Route53.html",
+              "include_contents": "toc-AWS_Route53.json"
+            },
+            {
+              "title": "Amazon Route 53 Recovery Control",
+              "href": "AWS_Route53RecoveryControl.html",
+              "include_contents": "toc-AWS_Route53RecoveryControl.json"
+            },
+            {
+              "title": "Amazon Route 53 Recovery Readiness",
+              "href": "AWS_Route53RecoveryReadiness.html",
+              "include_contents": "toc-AWS_Route53RecoveryReadiness.json"
+            },
+            {
+              "title": "Amazon Route 53 Resolver",
+              "href": "AWS_Route53Resolver.html",
+              "include_contents": "toc-AWS_Route53Resolver.json"
+            },
+            {
+              "title": "Amazon Route 53 Profiles",
+              "href": "AWS_Route53Profiles.html",
+              "include_contents": "toc-AWS_Route53Profiles.json"
+            },
+            {
+              "title": "Amazon CloudWatch RUM",
+              "href": "AWS_RUM.html",
+              "include_contents": "toc-AWS_RUM.json"
+            },
+            {
+              "title": "Amazon S3",
+              "href": "AWS_S3.html",
+              "include_contents": "toc-AWS_S3.json"
+            },
+            {
+              "title": "Amazon S3 Express",
+              "href": "AWS_S3Express.html",
+              "include_contents": "toc-AWS_S3Express.json"
+            },
+            {
+              "title": "Amazon S3 Object Lambda",
+              "href": "AWS_S3ObjectLambda.html",
+              "include_contents": "toc-AWS_S3ObjectLambda.json"
+            },
+            {
+              "title": "Amazon S3 on Outposts",
+              "href": "AWS_S3Outposts.html",
+              "include_contents": "toc-AWS_S3Outposts.json"
+            },
+            {
+              "title": "Amazon SageMaker",
+              "href": "AWS_SageMaker.html",
+              "include_contents": "toc-AWS_SageMaker.json"
+            },
+            {
+              "title": "AWS Secrets Manager",
+              "href": "AWS_SecretsManager.html",
+              "include_contents": "toc-AWS_SecretsManager.json"
+            },
+            {
+              "title": "Amazon Security Lake",
+              "href": "AWS_SecurityLake.html",
+              "include_contents": "toc-AWS_SecurityLake.json"
+            },
+            {
+              "title": "AWS Service Catalog",
+              "href": "AWS_ServiceCatalog.html",
+              "include_contents": "toc-AWS_ServiceCatalog.json"
+            },
+            {
+              "title": "AWS Service Catalog AppRegistry",
+              "href": "AWS_ServiceCatalogAppRegistry.html",
+              "include_contents": "toc-AWS_ServiceCatalogAppRegistry.json"
+            },
+            {
+              "title": "AWS Security Hub",
+              "href": "AWS_SecurityHub.html",
+              "include_contents": "toc-AWS_SecurityHub.json"
+            },
+            {
+              "title": "Amazon Simple Email Service",
+              "href": "AWS_SES.html",
+              "include_contents": "toc-AWS_SES.json"
+            },
+            {
+              "title": "Amazon SimpleDB",
+              "href": "AWS_SDB.html",
+              "include_contents": "toc-AWS_SDB.json"
+            },
+            {
+              "title": "AWS Shield",
+              "href": "AWS_Shield.html",
+              "include_contents": "toc-AWS_Shield.json"
+            },
+            {
+              "title": "AWS Signer",
+              "href": "AWS_Signer.html",
+              "include_contents": "toc-AWS_Signer.json"
+            },
+            {
+              "title": "AWS SimSpace Weaver",
+              "href": "AWS_SimSpaceWeaver.html",
+              "include_contents": "toc-AWS_SimSpaceWeaver.json"
+            },
+            {
+              "title": "Amazon Simple Notification Service",
+              "href": "AWS_SNS.html",
+              "include_contents": "toc-AWS_SNS.json"
+            },
+            {
+              "title": "Amazon Simple Queue Service",
+              "href": "AWS_SQS.html",
+              "include_contents": "toc-AWS_SQS.json"
+            },
+            {
+              "title": "AWS Step Functions",
+              "href": "AWS_StepFunctions.html",
+              "include_contents": "toc-AWS_StepFunctions.json"
+            },
+            {
+              "title": "AWS Systems Manager",
+              "href": "AWS_SSM.html",
+              "include_contents": "toc-AWS_SSM.json"
+            },
+            {
+              "title": "AWS Systems Manager Quick Setup",
+              "href": "AWS_SSMQuickSetup.html",
+              "include_contents": "toc-AWS_SSMQuickSetup.json"
+            },
+            {
+              "title": "AWS Support App",
+              "href": "AWS_SupportApp.html",
+              "include_contents": "toc-AWS_SupportApp.json"
+            },
+            {
+              "title": "AWS Systems Manager for SAP",
+              "href": "AWS_SystemsManagerSAP.html",
+              "include_contents": "toc-AWS_SystemsManagerSAP.json"
+            },
+            {
+              "title": "Amazon Timestream",
+              "href": "AWS_Timestream.html",
+              "include_contents": "toc-AWS_Timestream.json"
+            },
+            {
+              "title": "AWS Transfer Family",
+              "href": "AWS_Transfer.html",
+              "include_contents": "toc-AWS_Transfer.json"
+            },
+            {
+              "title": "Amazon Verified Permissions",
+              "href": "AWS_VerifiedPermissions.html",
+              "include_contents": "toc-AWS_VerifiedPermissions.json"
+            },
+            {
+              "title": "Amazon Connect Voice ID",
+              "href": "AWS_VoiceID.html",
+              "include_contents": "toc-AWS_VoiceID.json"
+            },
+            {
+              "title": "Amazon VPC Lattice",
+              "href": "AWS_VpcLattice.html",
+              "include_contents": "toc-AWS_VpcLattice.json"
+            },
+            {
+              "title": "AWS WAF",
+              "href": "AWS_WAF.html",
+              "include_contents": "toc-AWS_WAF.json"
+            },
+            {
+              "title": "AWS WAF Regional",
+              "href": "AWS_WAFRegional.html",
+              "include_contents": "toc-AWS_WAFRegional.json"
+            },
+            {
+              "title": "AWS WAF V2",
+              "href": "AWS_WAFv2.html",
+              "include_contents": "toc-AWS_WAFv2.json"
+            },
+            {
+              "title": "Amazon Connect Wisdom",
+              "href": "AWS_Wisdom.html",
+              "include_contents": "toc-AWS_Wisdom.json"
+            },
+            {
+              "title": "Amazon WorkSpaces",
+              "href": "AWS_WorkSpaces.html",
+              "include_contents": "toc-AWS_WorkSpaces.json"
+            },
+            {
+              "title": "Amazon WorkSpaces Thin Client",
+              "href": "AWS_WorkSpacesThinClient.html",
+              "include_contents": "toc-AWS_WorkSpacesThinClient.json"
+            },
+            {
+              "title": "Amazon WorkSpaces Secure Browser",
+              "href": "AWS_WorkSpacesWeb.html",
+              "include_contents": "toc-AWS_WorkSpacesWeb.json"
+            },
+            {
+              "title": "AWS X-Ray",
+              "href": "AWS_XRay.html",
+              "include_contents": "toc-AWS_XRay.json"
+            },
+            {
+              "title": "Shared property types",
+              "href": "cfn-reference-shared.html",
+              "contents": [
+                {
+                  "title": "Name type",
+                  "href": "aws-properties-name.html"
+                },
+                {
+                  "title": "Resource tag",
+                  "href": "aws-properties-resource-tags.html"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Resource attributes",
+          "href": "aws-product-attribute-reference.html",
+          "contents": [
+            {
+              "title": "CreationPolicy",
+              "href": "aws-attribute-creationpolicy.html"
+            },
+            {
+              "title": "DeletionPolicy",
+              "href": "aws-attribute-deletionpolicy.html"
+            },
+            {
+              "title": "DependsOn",
+              "href": "aws-attribute-dependson.html"
+            },
+            {
+              "title": "Metadata",
+              "href": "aws-attribute-metadata.html"
+            },
+            {
+              "title": "UpdatePolicy",
+              "href": "aws-attribute-updatepolicy.html"
+            },
+            {
+              "title": "UpdateReplacePolicy",
+              "href": "aws-attribute-updatereplacepolicy.html"
+            }
+          ]
+        },
+        {
+          "title": "Intrinsic functions",
+          "href": "intrinsic-function-reference.html",
+          "contents": [
+            {
+              "title": "Fn::Base64",
+              "href": "intrinsic-function-reference-base64.html"
+            },
+            {
+              "title": "Fn::Cidr",
+              "href": "intrinsic-function-reference-cidr.html"
+            },
+            {
+              "title": "Condition functions",
+              "href": "intrinsic-function-reference-conditions.html",
+              "contents": [
+                {
+                  "title": "Sample templates",
+                  "href": "conditions-sample-templates.html"
+                },
+                {
+                  "title": "Condition",
+                  "href": "intrinsic-function-reference-condition.html"
+                }
+              ]
+            },
+            {
+              "title": "Fn::FindInMap",
+              "href": "intrinsic-function-reference-findinmap.html"
+            },
+            {
+              "title": "Fn::ForEach",
+              "href": "intrinsic-function-reference-foreach.html",
+              "contents": [
+                {
+                  "title": "Examples",
+                  "href": "intrinsic-function-reference-foreach-examples.html",
+                  "contents": [
+                    {
+                      "title": "Resources section",
+                      "href": "intrinsic-function-reference-foreach-example-resource.html"
+                    },
+                    {
+                      "title": "Outputs section",
+                      "href": "intrinsic-function-reference-foreach-example-outputs.html"
+                    },
+                    {
+                      "title": "Conditions section",
+                      "href": "intrinsic-function-reference-foreach-example-conditions.html"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Fn::GetAtt",
+              "href": "intrinsic-function-reference-getatt.html"
+            },
+            {
+              "title": "Fn::GetAZs",
+              "href": "intrinsic-function-reference-getavailabilityzones.html"
+            },
+            {
+              "title": "Fn::ImportValue",
+              "href": "intrinsic-function-reference-importvalue.html"
+            },
+            {
+              "title": "Fn::Join",
+              "href": "intrinsic-function-reference-join.html"
+            },
+            {
+              "title": "Fn::Length",
+              "href": "intrinsic-function-reference-length.html"
+            },
+            {
+              "title": "Fn::Select",
+              "href": "intrinsic-function-reference-select.html"
+            },
+            {
+              "title": "Fn::Split",
+              "href": "intrinsic-function-reference-split.html"
+            },
+            {
+              "title": "Fn::Sub",
+              "href": "intrinsic-function-reference-sub.html"
+            },
+            {
+              "title": "Fn::ToJsonString",
+              "href": "intrinsic-function-reference-ToJsonString.html"
+            },
+            {
+              "title": "Fn::Transform",
+              "href": "intrinsic-function-reference-transform.html"
+            },
+            {
+              "title": "Ref",
+              "href": "intrinsic-function-reference-ref.html"
+            }
+          ]
+        },
+        {
+          "title": "Pseudo parameters",
+          "href": "pseudo-parameter-reference.html"
+        },
+        {
+          "title": "Transform reference",
+          "href": "transform-reference.html",
+          "contents": [
+            {
+              "title": "AWS::CodeDeployBlueGreen",
+              "href": "transform-aws-codedeploybluegreen.html"
+            },
+            {
+              "title": "AWS::Include",
+              "href": "create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html"
+            },
+            {
+              "title": "AWS::LanguageExtensions transform",
+              "href": "transform-aws-languageextensions.html",
+              "contents": [
+                {
+                  "title": "Intrinsic function references in DeletionPolicy and UpdateReplacePolicy attributes",
+                  "href": "function-refs-in-policy-attributes.html"
+                },
+                {
+                  "title": "Fn::FindInMap enhancements",
+                  "href": "intrinsic-function-reference-findinmap-enhancements.html"
+                }
+              ]
+            },
+            {
+              "title": "AWS::SecretsManager",
+              "href": "transform-aws-secretsmanager.html"
+            },
+            {
+              "title": "AWS::Serverless",
+              "href": "transform-aws-serverless.html"
+            },
+            {
+              "title": "AWS::ServiceCatalog",
+              "href": "transform-aws-servicecatalog.html"
+            }
+          ]
+        },
+        {
+          "title": "CloudFormation helper scripts",
+          "href": "cfn-helper-scripts-reference.html",
+          "contents": [
+            {
+              "title": "cfn-init",
+              "href": "cfn-init.html"
+            },
+            {
+              "title": "cfn-signal",
+              "href": "cfn-signal.html"
+            },
+            {
+              "title": "cfn-get-metadata",
+              "href": "cfn-get-metadata.html"
+            },
+            {
+              "title": "cfn-hup",
+              "href": "cfn-hup.html"
+            }
+          ]
+        },
+        {
+          "title": "Resource specification",
+          "href": "cfn-resource-specification.html",
+          "contents": [
+            {
+              "title": "Specification format",
+              "href": "cfn-resource-specification-format.html"
+            }
+          ]
+        },
+        {
+          "title": "Resource provider schemas",
+          "href": "resource-type-schemas.html"
+        }
+      ]
+    },
+    {
+      "title": "Security",
+      "href": "security.html",
+      "contents": [
+        {
+          "title": "Protect stacks from being deleted",
+          "href": "using-cfn-protect-stacks.html"
+        },
+        {
+          "title": "Prevent updates to stack resources",
+          "href": "protect-stack-resources.html"
+        },
+        {
+          "title": "Data protection",
+          "href": "security-data-protection.html"
+        },
+        {
+          "title": "Control access with IAM",
+          "href": "using-iam-template.html",
+          "contents": [
+            {
+              "title": "AWS CloudFormation service role",
+              "href": "using-iam-servicerole.html"
+            }
+          ]
+        },
+        {
+          "title": "Logging API calls",
+          "href": "cfn-api-logging-cloudtrail.html"
+        },
+        {
+          "title": "Infrastructure security",
+          "href": "infrastructure-security.html"
+        },
+        {
+          "title": "Resilience",
+          "href": "disaster-recovery-resiliency.html"
+        },
+        {
+          "title": "Compliance validation",
+          "href": "cloudformation-compliance.html"
+        },
+        {
+          "title": "Configuration and vulnerability analysis",
+          "href": "vulnerability-analysis-and-management.html"
+        },
+        {
+          "title": "Security best practices",
+          "href": "security-best-practices.html"
+        },
+        {
+          "title": "AWS PrivateLink",
+          "href": "vpc-interface-endpoints.html"
+        }
+      ]
+    },
+    {
+      "title": "Monitoring with EventBridge",
+      "href": "eventbridge-integration.html",
+      "contents": [
+        {
+          "title": "Creating a custom event pattern",
+          "href": "eventbridge-using-events-rules-patterns.html"
+        },
+        {
+          "title": "Events detail reference",
+          "href": "events-detail-reference.html",
+          "contents": [
+            {
+              "title": "Resource Status Change",
+              "href": "event-detail-resource-status-change.html"
+            },
+            {
+              "title": "Stack Status Change",
+              "href": "event-detail-stack-status-change.html"
+            },
+            {
+              "title": "Drift Detection Status Change",
+              "href": "event-detail-stack-drift-detection-change.html"
+            },
+            {
+              "title": "StackSet Status Change",
+              "href": "event-detail-stackset-status-change.html"
+            },
+            {
+              "title": "StackSet Stack Instance Status Change",
+              "href": "event-detail-stackset-stack-instance-status-change.html"
+            },
+            {
+              "title": "StackSet Operation Status Change",
+              "href": "event-detail-stackset-operation-status-change.html"
+            },
+            {
+              "title": "Repository Sync Status Change",
+              "href": "event-detail-respository-sync-status-change.html"
+            },
+            {
+              "title": "Resource Sync Status Change",
+              "href": "event-detail-resource-sync-status-change.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Troubleshooting",
+      "href": "troubleshooting.html"
+    },
+    {
+      "title": "Release history",
+      "href": "ReleaseHistory.html",
+      "contents": [
+        {
+          "title": "Release history for helper scripts",
+          "href": "releasehistory-aws-cfn-bootstrap.html"
+        }
+      ]
+    }
+  ]
+}
