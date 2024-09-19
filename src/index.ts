@@ -14,7 +14,32 @@ const APP_ROOT = path.resolve(
     path.basename(path.dirname(__dirname)) == compilerOptions.outDir ? '../..' : '..'
 )
 const DOC_BUILD_ROOT = path.join(APP_ROOT, 'docbuild')
-const DOCSET_DIR = path.join(DOC_BUILD_ROOT, 'aws-cloudformation.docset')
+
+const PLIST = `
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+        <key>CFBundleIdentifier</key>
+        <string>aws-cloudformation</string>
+
+        <key>CFBundleName</key>
+        <string>AWS CloudFormation</string>
+
+        <key>DocSetPlatformFamily</key>
+        <string>aws-cloudformation</string>
+
+        <key>isDashDocset</key>
+        <true/>
+
+        <key>isJavaScriptEnabled</key>
+        <true/>
+
+        <key>dashIndexFilePath</key>
+        <string>index.html</string>
+    </dict>
+</plist>
+`
 
 enum DocumentTypes {
     RESOURCE = 'Resource',
@@ -24,8 +49,13 @@ enum DocumentTypes {
 }
 
 async function main(): Promise<void> {
-    await createWorkspace(DOC_BUILD_ROOT, DOCSET_DIR);
-    const docSections = await fetchDocsToc(AWS_CFN_TOC_URL);
+    const {
+        docsetDir,
+        docsetContentsDir,
+        docsetDocsDir,
+        plistFilePath
+    } = await createWorkspace(DOC_BUILD_ROOT, PLIST)
+    const docSections = await fetchDocsToc(AWS_CFN_TOC_URL)
 }
 
 main();
