@@ -1,10 +1,6 @@
-import jp from 'jsonpath'
-import fs from 'fs'
-import path from 'path'
 import fetch from "jest-fetch-mock"
 
 import {
-    fetchDocsToc,
     fetchIncludeContents,
     queryToc,
     resolveIncludeContents,
@@ -385,27 +381,7 @@ describe('fetchDocsToc', () => {
         })
     })
 
-    describe.skip('fetchDocsToc()', () => {
-        const mockToc = JSON.parse(
-            fs.readFileSync(
-                path.resolve(
-                    __dirname,
-                    '../data/toc-contents.json'
-                ),
-                'utf-8'
-            )
-        )
-
-        describe('should succeed when', () => {
-            test('fetch the TOC from the given URL', async () => {
-                fetch.disableMocks()
-                //fetch.mockResponse(JSON.stringify(mockToc))
-                await fetchDocsToc(AWS_CFN_TOC_URL)
-                //expect(fetch.mock.calls.length).toEqual(1)
-            },
-            10000
-        )
-        })
+    describe('fetchDocsToc()', () => {
+        test.skip('unit tests unnecessatu', () =>{})
     })
-
 })
