@@ -3,6 +3,7 @@ import { compilerOptions } from '../tsconfig.json'
 
 import { createWorkspace } from './createWorkspace'
 import { fetchDocsToc } from './fetchDocsToc'
+import { fetchDocs } from './fetchDocs'
 
 const AWS_CFN_DOC_ROOT = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide'
 const AWS_CFN_TOC_FILE = 'toc-contents.json'
@@ -56,6 +57,11 @@ async function main(): Promise<void> {
         plistFilePath
     } = await createWorkspace(DOC_BUILD_ROOT, PLIST)
     const docSections = await fetchDocsToc(AWS_CFN_TOC_URL)
+    await Promise.all(
+        Object.entries(docSections).map(async ([_, tocItem]) => {
+            return await fetchDocs(tocItem, AWS_CFN_DOC_ROOT, docsetDocsDir)
+        })
+    )
 }
 
 main();
