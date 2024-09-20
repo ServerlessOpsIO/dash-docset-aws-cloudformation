@@ -38,6 +38,9 @@ const PLIST = `
 
         <key>dashIndexFilePath</key>
         <string>index.html</string>
+
+        <key>DashDocSetFallbackURL</key>
+        <string>http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide</string>
     </dict>
 </plist>
 `
