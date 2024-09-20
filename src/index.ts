@@ -16,35 +16,6 @@ const APP_ROOT = path.resolve(
 )
 const DOC_BUILD_ROOT = path.join(APP_ROOT, 'docbuild')
 
-const PLIST = `
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-        <key>CFBundleIdentifier</key>
-        <string>aws-cloudformation</string>
-
-        <key>CFBundleName</key>
-        <string>AWS CloudFormation</string>
-
-        <key>DocSetPlatformFamily</key>
-        <string>aws-cloudformation</string>
-
-        <key>isDashDocset</key>
-        <true/>
-
-        <key>isJavaScriptEnabled</key>
-        <true/>
-
-        <key>dashIndexFilePath</key>
-        <string>index.html</string>
-
-        <key>DashDocSetFallbackURL</key>
-        <string>http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide</string>
-    </dict>
-</plist>
-`
-
 enum DocumentTypes {
     RESOURCE = 'Resource',
     PROPERTY = 'Property',
@@ -57,8 +28,9 @@ async function main(): Promise<void> {
         docsetDir,
         docsetContentsDir,
         docsetDocsDir,
-        plistFilePath
-    } = await createWorkspace(DOC_BUILD_ROOT, PLIST)
+        plistFilePath,
+        iconFilePath
+    } = await createWorkspace(APP_ROOT, DOC_BUILD_ROOT)
     const docSections = await fetchDocsToc(AWS_CFN_TOC_URL)
     await Promise.all(
         Object.entries(docSections).map(async ([_, tocItem]) => {

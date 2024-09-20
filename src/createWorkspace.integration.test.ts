@@ -1,34 +1,15 @@
 import fs from 'fs-extra'
 import path from 'path'
 import os from 'os'
+import { compilerOptions } from '../tsconfig.json'
 
 import { createWorkspace } from './createWorkspace'
 
-const PLIST = `
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-        <key>CFBundleIdentifier</key>
-        <string>aws-cloudformation</string>
-
-        <key>CFBundleName</key>
-        <string>AWS CloudFormation</string>
-
-        <key>DocSetPlatformFamily</key>
-        <string>aws-cloudformation</string>
-
-        <key>isDashDocset</key>
-        <true/>
-
-        <key>isJavaScriptEnabled</key>
-        <true/>
-
-        <key>dashIndexFilePath</key>
-        <string>index.html</string>
-    </dict>
-</plist>
-`
+// Resolve APP_ROOT based on whether TS or compiled JS.
+const APP_ROOT = path.resolve(
+    __dirname,
+    path.basename(path.dirname(__dirname)) == compilerOptions.outDir ? '../..' : '..'
+)
 
 describe('createWorkspace', () => {
     describe('createWorkspace()', () => {
@@ -36,7 +17,7 @@ describe('createWorkspace', () => {
 
         beforeEach( async () => {
             tmpDir = await fs.promises.mkdtemp(
-                path.join(os.tmpdir(),'dash-docset-aws-cloudformation-test-')
+                path.join(os.tmpdir(), 'dash-docset-aws-cloudformation-test-')
             )
         })
 
@@ -51,12 +32,13 @@ describe('createWorkspace', () => {
                     docsetContentsDir,
                     docsetDocsDir,
                     plistFilePath
-                } = await createWorkspace(tmpDir, PLIST)
+                } = await createWorkspace(APP_ROOT, tmpDir)
 
                 expect(await fs.pathExists(docsetDir)).toBe(true)
                 expect(await fs.pathExists(docsetContentsDir)).toBe(true)
                 expect(await fs.pathExists(docsetDocsDir)).toBe(true)
                 expect(await fs.pathExists(plistFilePath)).toBe(true)
+                expect(await fs.pathExists(path.join(docsetDir, 'icon.png'))).toBe(true)
             })
         })
     })
