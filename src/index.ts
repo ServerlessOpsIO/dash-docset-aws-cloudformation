@@ -4,6 +4,7 @@ import { compilerOptions } from '../tsconfig.json'
 import { createWorkspace } from './createWorkspace'
 import { fetchDocsToc } from './fetchDocsToc'
 import { fetchDocs } from './fetchDocs'
+import { createDb } from './createDb'
 
 const AWS_CFN_DOC_ROOT = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide'
 const AWS_CFN_TOC_FILE = 'toc-contents.json'
@@ -37,6 +38,8 @@ async function main(): Promise<void> {
             return await fetchDocs(tocItem, AWS_CFN_DOC_ROOT, docsetDocsDir)
         })
     )
+
+    await createDb(docsetDocsDir)
 }
 
 main();
