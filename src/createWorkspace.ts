@@ -37,8 +37,7 @@ export async function createWorkspace(appRoot: string, buildRoot: string): Promi
 
     await fs.emptyDir(buildRoot);
     await fs.ensureDir(docsetDocsDir)   // deepest directory path
-    await fs.promises.copyFile(path.join(appRoot, LOCAL_PLIST_FILE_PATH), plistFilePath)
-    await fs.promises.copyFile(path.join(appRoot, LOCAL_ICON_FILE_PATH), iconFilePath)
+    await fs.copy(path.join(appRoot, 'static'), docsetDir)
 
 
     return {

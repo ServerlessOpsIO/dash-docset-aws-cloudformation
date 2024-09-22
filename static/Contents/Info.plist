@@ -18,9 +18,12 @@
         <true/>
 
         <key>dashIndexFilePath</key>
-        <string>index.html</string>
+        <string>aws-template-resource-type-ref.html</string>
 
         <key>DashDocSetFallbackURL</key>
         <string>http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide</string>
+
+        <key>DashDocSetFamily</key>
+        <string>dashtoc</string>
     </dict>
 </plist>
