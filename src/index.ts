@@ -17,13 +17,6 @@ const APP_ROOT = path.resolve(
 )
 const DOC_BUILD_ROOT = path.join(APP_ROOT, 'docbuild')
 
-enum DocumentTypes {
-    RESOURCE = 'Resource',
-    PROPERTY = 'Property',
-    ATTRIBUTE = 'Attribute',
-    FUNCTION = 'Function',
-}
-
 async function main(): Promise<void> {
     const {
         docsetDir,
