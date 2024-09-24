@@ -1,7 +1,20 @@
 import fs from 'fs-extra'
 import path from 'path'
+import * as cheerio from 'cheerio'
 
 import { TocItem } from './fetchDocsToc'
+import { template } from './template.html'
+
+export async function createPage(pageBody: string): Promise<cheerio.CheerioAPI> {
+    const $ = cheerio.load(template)
+
+    const $pageContents = cheerio.load(pageBody)
+    const $mainContents = $pageContents('#main-content')
+    $mainContents.find('#main-col-footer').remove()
+    $('#content').append($mainContents)
+
+    return $
+}
 
 /**
  * Given a tocItem and urlRoot fetch the page from the href property and save it as a file in
@@ -20,12 +33,13 @@ export async function fetchDocs(
     // Fetch the page
     const response = await fetch([urlRoot, tocItem.href].join('//'))
     const body = await response.text()
+    const $page = await createPage(body)
 
     // Save the page to a file
     const filePath = path.join(docsDir, tocItem.href)
 
     if ( !fs.existsSync(filePath) ) {
-        await fs.promises.writeFile(filePath, body)
+        await fs.promises.writeFile(filePath, $page.html())
     } else {
         throw new Error(`File already exists: ${filePath}`)
     }

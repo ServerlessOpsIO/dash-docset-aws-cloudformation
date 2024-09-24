@@ -10,9 +10,10 @@ jest.mock('fs-extra', () => {
 import fs from 'fs-extra'
 import path from 'path'
 import os from 'os'
+import * as cheerio from 'cheerio'
 
 import fetch from "jest-fetch-mock"
-import { fetchDocs } from "./fetchDocs"
+import { fetchDocs, createPage } from "./fetchDocs"
 
 const URL_ROOT = "http://example.com"
 
@@ -24,6 +25,18 @@ describe("fetchDocs", () => {
     beforeEach(() => {
         fetch.resetMocks()
     });
+
+    describe('createPage()', () => {
+        describe('should succeed when', () => {
+            test('given a valid pageBody', async () => {
+                const pageBody = "<div id='main-content'>Hello, World!</div>"
+                const $expectedResult = cheerio.load(pageBody)('#main-content').html()
+                const $ = await createPage(pageBody)
+
+                expect($('#content').html()).toContain($expectedResult)
+            })
+        })
+    })
 
     describe("fetchDocs()", () => {
         describe('without writing files', () => {
@@ -141,4 +154,5 @@ describe("fetchDocs", () => {
             })
         })
     })
+
 })

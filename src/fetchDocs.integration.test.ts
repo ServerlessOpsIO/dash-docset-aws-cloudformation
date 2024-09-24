@@ -100,7 +100,7 @@ describe('fetchDocs', () => {
                         'aws-resource-logs-accountpolicy.html',
                         'aws-resource-logs-delivery.html'
                     ]
-                )('downloaded files exist', async ( filename ) => {
+                )('doc files exist', async ( filename ) => {
                     expect(await fs.pathExists(path.join(tmpDir, filename))).toBe(true)
                 })
 
@@ -110,9 +110,18 @@ describe('fetchDocs', () => {
                         'aws-resource-logs-accountpolicy.html',
                         'aws-resource-logs-delivery.html'
                     ]
-                )('downloaded files are HTML files', async ( filename ) => {
+                )('doc files are HTML files', async ( filename ) => {
                     const contents = await fs.promises.readFile(path.join(tmpDir, filename), { encoding: 'utf-8' })
                     expect(contents.startsWith('<!DOCTYPE html>')).toBe(true)
+                })
+                test.skip.each(
+                    [
+                        'AWS_Logs.html',
+                        'aws-resource-logs-accountpolicy.html',
+                        'aws-resource-logs-delivery.html'
+                    ]
+                )('doc files match expected', async ( filename ) => {
+
                 })
             })
         })
