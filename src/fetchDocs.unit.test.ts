@@ -29,8 +29,8 @@ describe("fetchDocs", () => {
     describe('createPage()', () => {
         describe('should succeed when', () => {
             test('given a valid pageBody', async () => {
-                const pageBody = "<div id='main-content'>Hello, World!</div>"
-                const $expectedResult = cheerio.load(pageBody)('#main-content').html()
+                const pageBody = "<div id='main-col-body'>Hello, World!</div>"
+                const $expectedResult = cheerio.load(pageBody)('#main-col-body').html()
                 const $ = await createPage(pageBody)
 
                 expect($('#content').html()).toContain($expectedResult)

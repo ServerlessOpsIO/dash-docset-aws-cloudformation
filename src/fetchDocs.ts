@@ -9,8 +9,9 @@ export async function createPage(pageBody: string): Promise<cheerio.CheerioAPI> 
     const $ = cheerio.load(template)
 
     const $pageContents = cheerio.load(pageBody)
-    const $mainContents = $pageContents('#main-content')
-    $mainContents.find('#main-col-footer').remove()
+    const $mainContents = $pageContents('#main-col-body')
+    $mainContents.find('.awsdocs-page-header-container').remove()
+    $mainContents.find('awsdocs-language-banner').remove()
     $('#content').append($mainContents)
 
     return $
