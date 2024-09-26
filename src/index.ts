@@ -19,12 +19,8 @@ export const DOC_BUILD_ROOT = path.join(APP_ROOT, 'docbuild')
 
 export async function main(): Promise<void> {
     const {
-        docsetDir,
-        docsetContentsDir,
-        docsetResourcesDir,
         docsetDocsDir,
-        plistFilePath,
-        iconFilePath
+        docsetResourcesDir
     } = await createWorkspace(APP_ROOT, DOC_BUILD_ROOT)
     const tocSections = await fetchDocsToc(AWS_CFN_TOC_URL)
 
