@@ -82,6 +82,12 @@ export function identifyDocType(tocItem: TocItem): string {
         docType = 'Unknown'
     }
 
+    if (tocItem.contents) {
+        (tocItem as TocItem).contents?.map(async (item) => {
+            item.docType = identifyDocType(item)
+        })
+    }
+
     return docType
 }
 
@@ -162,14 +168,9 @@ export async function fetchDocsToc(url: string): Promise<TocSections> {
         })
     )
 
+    // FIXME: We're not going deep enough
     Object.entries(tocSections).map(([_, tocItem]) => {
         tocItem.docType = identifyDocType(tocItem)
-
-        if (tocItem.contents) {
-            (tocItem as TocItem).contents?.map(async (item) => {
-                item.docType = identifyDocType(item)
-            })
-        }
     })
 
     return tocSections
