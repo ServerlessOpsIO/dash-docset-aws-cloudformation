@@ -50,7 +50,7 @@ export async function fetchDocs(
     if (tocItem.contents) {
         await Promise.all(
             tocItem.contents.map(async (content) => {
-                return await fetchDocs(content, urlRoot, docsDir)
+                return fetchDocs(content, urlRoot, docsDir)
             })
         )
     }

@@ -55,7 +55,7 @@ export async function createDb(docsDir: string, tocSections: TocSections): Promi
 
     await Promise.all(
         Object.entries(tocSections).map(async ([_, item]) => {
-            await populateDb(db, item)
+            return populateDb(db, item)
         })
     )
 
@@ -63,7 +63,7 @@ export async function createDb(docsDir: string, tocSections: TocSections): Promi
         Object.entries(tocSections).map(async ([_, tocSection]) => {
             if (tocSection.contents) {
                 (tocSection.contents as TocItem[]).map(async (item) => {
-                    await populateDb(db, item)
+                    return populateDb(db, item)
                 })
             }
         })

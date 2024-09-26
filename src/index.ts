@@ -30,7 +30,7 @@ export async function main(): Promise<void> {
 
     await Promise.all(
         Object.entries(tocSections).map( async ([_, items]) => {
-            await fetchDocs(items, AWS_CFN_DOC_ROOT, docsetDocsDir)
+            return fetchDocs(items, AWS_CFN_DOC_ROOT, docsetDocsDir)
         })
     )
 
