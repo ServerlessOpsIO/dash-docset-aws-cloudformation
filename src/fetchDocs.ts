@@ -2,7 +2,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import * as cheerio from 'cheerio'
 
-import { TocItem } from './fetchDocsToc'
+import { TocItem } from './types'
 import { template } from './template.html'
 
 export async function createPage(pageBody: string): Promise<cheerio.CheerioAPI> {
@@ -32,7 +32,8 @@ export async function fetchDocs(
     docsDir: string
 ): Promise<void> {
     // Fetch the page
-    const response = await fetch([urlRoot, tocItem.href].join('//'))
+    console.info('Fetching doc page:', [urlRoot, tocItem.href].join('/'))
+    const response = await fetch([urlRoot, tocItem.href].join('/'))
     const body = await response.text()
     const $page = await createPage(body)
 

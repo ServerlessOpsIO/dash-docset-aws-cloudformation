@@ -1,9 +1,10 @@
 import fetch from "jest-fetch-mock"
-import jp from 'jsonpath'
 
 import {
-    fetchDocsToc,
     TocSections,
+} from './types'
+import {
+    fetchDocsToc,
 } from './fetchDocsToc'
 
 const AWS_CFN_DOC_ROOT = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide'

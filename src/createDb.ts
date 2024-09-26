@@ -3,13 +3,9 @@ import path from 'path'
 import { open, Database } from 'sqlite'
 import sqlite3 from 'sqlite3'
 
-export const DB_FILE_NAME = 'docSet.dsidx'
+import { TocItem, TocSections } from './types'
 
-export interface ItemType {
-    name: string
-    type: string
-    path: string
-}
+export const DB_FILE_NAME = 'docSet.dsidx'
 
 /**
  * Initialize database
@@ -33,90 +29,15 @@ export async function initializeDb(dbFile: string): Promise<Database> {
 }
 
 /**
- * Identify item type
- *
- * Identify item type based on file name
- *
- * @param filename File name
- */
-export async function identifyItem(filename: string): Promise<ItemType> {
-    if ( filename.startsWith('AWS_') ) {
-        return {
-            name: filename.split('.')[0].replace('AWS_', ''),
-            type: 'Service',
-            path: filename
-        }
-    } else if ( filename.startsWith('aws-properties-') ) {
-        return {
-            name: filename.split('.')[0].split('-').slice(2).join(' '),
-            type: 'Property',
-            path: filename
-        }
-    } else if ( filename.startsWith('aws-resource-') ) {
-        return {
-            name: filename.split('.')[0].split('-').slice(2).join(' '),
-            type: 'Resource',
-            path: filename
-        }
-    } else if (filename.startsWith('aws-attribute-')) {
-        return {
-            name: filename.split('.')[0].split('-').slice(2).join(' '),
-            type: 'Attribute',
-            path: filename
-        }
-    } else if (filename.startsWith('intrinsic-function-reference')) {
-        return {
-            name: filename.split('.')[0].split('-').slice(3).join(' '),
-            type: 'Function',
-            path: filename
-        }
-    } else if (filename == 'pseudo-parameter-reference.html') {
-        return {
-            name: 'pseudo parameter',
-            type: 'Parameter',
-            path: filename
-        }
-    } else if ( filename.startsWith('Alexa_') ) {
-        return {
-            name: filename.split('.')[0].split('_').join(' '),
-            type: 'Service',
-            path: filename
-        }
-    } else if (filename.startsWith('alexa-properties-')) {
-        return {
-            name: [ 'Alexa', filename.split('.')[0].split('-').slice(2).join(' ')].join(' '),
-            type: 'Property',
-            path: filename
-        }
-    } else if (filename.startsWith('alexa-resource-')) {
-        return {
-            name: [ 'Alexa', filename.split('.')[0].split('-').slice(2).join(' ')].join(' '),
-            type: 'Resource',
-            path: filename
-        }
-    } else {
-        //throw new Error('Unknown item type; filename: ' + filename)
-        console.error('Unknown item type; filename: ' + filename)
-        return {
-            name: filename.split('.')[0],
-            type: 'Unknown',
-            path: filename
-        }
-    }
-}
-
-/**
  * Populate database with documents
  *
- * For the given docsDir get list of all files and for each file call insertItem()
- *
  * @param db Database instance
- * @param file File name
+ * @param tocItem TocItem to populate database with
  */
-export async function populateDb(db: Database, file: string): Promise<void> {
-    const { name, type, path } = await identifyItem(file)
+export async function populateDb(db: Database, tocItem: TocItem): Promise<void> {
+    console.info('Populating db with:', tocItem.title)
     await db.run(
-        `INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES ('${name}', '${type}', '${path}');`
+        `INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES ('${tocItem.title}', '${tocItem.docType}', '${tocItem.href}');`
     )
 }
 
@@ -126,14 +47,27 @@ export async function populateDb(db: Database, file: string): Promise<void> {
  * Initialize database and populate with documents
  *
  * @param docsDir Directory containing documents
+ * @param tocSections Table of contents sections
  */
-export async function createDb(docsDir: string): Promise<void> {
-    const dbPath = path.resolve(path.join(docsDir, '..', DB_FILE_NAME))
+export async function createDb(docsDir: string, tocSections: TocSections): Promise<void> {
+    const dbPath = path.resolve(path.join(docsDir, DB_FILE_NAME))
     const db = await initializeDb(dbPath)
 
     await Promise.all(
-        (await fs.readdir(docsDir)).map(async (file) => {
-            await populateDb(db, file)
+        Object.entries(tocSections).map(async ([_, item]) => {
+            await populateDb(db, item)
         })
     )
+
+    await Promise.all(
+        Object.entries(tocSections).map(async ([_, tocSection]) => {
+            if (tocSection.contents) {
+                (tocSection.contents as TocItem[]).map(async (item) => {
+                    await populateDb(db, item)
+                })
+            }
+        })
+    )
+
+    await db.close()
 }

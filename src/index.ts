@@ -15,24 +15,26 @@ const APP_ROOT = path.resolve(
     __dirname,
     path.basename(path.dirname(__dirname)) == compilerOptions.outDir ? '../..' : '..'
 )
-const DOC_BUILD_ROOT = path.join(APP_ROOT, 'docbuild')
+export const DOC_BUILD_ROOT = path.join(APP_ROOT, 'docbuild')
 
-async function main(): Promise<void> {
+export async function main(): Promise<void> {
     const {
         docsetDir,
         docsetContentsDir,
+        docsetResourcesDir,
         docsetDocsDir,
         plistFilePath,
         iconFilePath
     } = await createWorkspace(APP_ROOT, DOC_BUILD_ROOT)
-    const docSections = await fetchDocsToc(AWS_CFN_TOC_URL)
+    const tocSections = await fetchDocsToc(AWS_CFN_TOC_URL)
+
     await Promise.all(
-        Object.entries(docSections).map(async ([_, tocItem]) => {
-            return await fetchDocs(tocItem, AWS_CFN_DOC_ROOT, docsetDocsDir)
+        Object.entries(tocSections).map( async ([_, items]) => {
+            await fetchDocs(items, AWS_CFN_DOC_ROOT, docsetDocsDir)
         })
     )
 
-    await createDb(docsetDocsDir)
+    await createDb(docsetResourcesDir, tocSections)
 }
 
 main();

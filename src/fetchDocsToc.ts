@@ -1,6 +1,14 @@
 import jp from 'jsonpath'
 import path from 'path'
 
+import { Toc, TocItem, TocSections } from './types'
+
+interface TocSectionsQueries {
+    resources: string
+    pseudoParameters: string
+    intrinsicFunctions: string
+    resourceAttributes: string
+}
 
 export enum TocSectionTitles {
     TEMPLATE_REFERENCE = 'Template reference',
@@ -11,36 +19,6 @@ export enum TocSectionTitles {
 }
 
 /**
- * Could not find a published schema so crated these interfaces based on conventions found. eg.
- * None of the top-level contents array items have an include_contents property and none of the
- * template reference content items has a contents property.
- */
-export interface TocItem {
-    title: string
-    href: string
-    contents?: TocItem[]
-    include_contents?: string
-}
-
-interface TocSectionsQueries {
-    resources: string
-    pseudoParameters: string
-    intrinsicFunctions: string
-    resourceAttributes: string
-}
-
-export interface TocSections {
-    resources?: TocItem
-    pseudoParameters?: TocItem
-    intrinsicFunctions?: TocItem
-    resourceAttributes?: TocItem
-}
-
-export interface Toc {
-    contents: TocItem[]
-}
-
-/** 
  * Fetches the contents from the URL urlRoot + tocItem.include_contents and returns the
  * contents.
  *
@@ -48,6 +26,7 @@ export interface Toc {
  * @param urlRoot
  */
 export async function fetchIncludeContents(tocItem: TocItem, urlRoot: string): Promise<TocItem> {
+    console.info('Fetching TOC:', [urlRoot, tocItem.include_contents].join('/'))
     const response = await fetch([urlRoot, tocItem.include_contents].join('/'))
     const includeContents = await response.json() as TocItem
 
@@ -69,6 +48,41 @@ export async function fetchIncludeContents(tocItem: TocItem, urlRoot: string): P
     }
 
     return newTocItem
+}
+
+/**
+ * Given a tocItem, identify the type of document it is.
+ *
+ * @param tocItem
+ */
+export function identifyDocType(tocItem: TocItem): string {
+    let docType: string
+
+    if ( tocItem.href.startsWith('AWS_') ) {
+            docType = 'Service'
+    } else if ( tocItem.href.startsWith('aws-properties-') ) {
+        docType = 'Property'
+    } else if ( tocItem.href.startsWith('aws-resource-') ) {
+        docType = 'Resource'
+    } else if (tocItem.href.startsWith('aws-attribute-')) {
+        docType = 'Attribute'
+    } else if (tocItem.href.startsWith('intrinsic-function-reference')) {
+        docType = 'Function'
+    } else if (tocItem.href == 'pseudo-parameter-reference.html') {
+        docType = 'Parameter'
+    } else if ( tocItem.href.startsWith('Alexa_') ) {
+        docType ='Service'
+    } else if (tocItem.href.startsWith('alexa-properties-')) {
+        docType = 'Property'
+    } else if (tocItem.href.startsWith('alexa-resource-')) {
+        docType = 'Resource'
+    } else {
+        //throw new Error('Unknown item type; filename: ' + filename)
+        console.warn('Unknown item type; filename: ' + tocItem.href)
+        docType = 'Unknown'
+    }
+
+    return docType
 }
 
 /**
@@ -114,8 +128,13 @@ export async function resolveIncludeContents(
     return tocItem
 }
 
-
+/**
+ * Fetch the TOC from the given URL and return the sections specified in the tocSectionQueries.
+ *
+ * @param url URL to fetch the TOC from
+ */
 export async function fetchDocsToc(url: string): Promise<TocSections> {
+    console.info('Fetching TOC: ', url)
     const response = await fetch(url)
     const toc = await response.json() as Toc
 
@@ -126,22 +145,32 @@ export async function fetchDocsToc(url: string): Promise<TocSections> {
         resourceAttributes: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.RESOURCE_ATTRIBUTES}")]`,
     }
 
-    let docSections: TocSections = {}
+    let tocSections: TocSections = {}
 
     await Promise.all(
         Object.entries(tocSectionQueries).map(async ([section, query]) => {
-            (docSections as any)[section] =  await queryToc(toc, query)
+            (tocSections as any)[section] =  await queryToc(toc, query)
         })
     )
 
     const { origin, pathname } = new URL(url)
     await Promise.all(
-        Object.entries(docSections).map(async ([section, tocItem]) => {
-            (docSections as any)[section] = await resolveIncludeContents(
+        Object.entries(tocSections).map(async ([section, tocItem]) => {
+            (tocSections as any)[section] = await resolveIncludeContents(
                 tocItem, origin + path.dirname(pathname)
             )
         })
     )
 
-    return docSections
+    Object.entries(tocSections).map(([_, tocItem]) => {
+        tocItem.docType = identifyDocType(tocItem)
+
+        if (tocItem.contents) {
+            (tocItem as TocItem).contents?.map(async (item) => {
+                item.docType = identifyDocType(item)
+            })
+        }
+    })
+
+    return tocSections
 }

@@ -3,7 +3,7 @@ import path from 'path'
 import os from 'os'
 
 import { fetchDocs } from "./fetchDocs"
-import { TocItem } from "./fetchDocsToc"
+import { TocItem } from "./types"
 
 const AWS_CFN_DOC_ROOT = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide'
 

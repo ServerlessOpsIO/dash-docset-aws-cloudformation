@@ -1,11 +1,14 @@
 import fetch from "jest-fetch-mock"
 
 import {
+    Toc,
+    TocItem,
+} from './types'
+import {
     fetchIncludeContents,
+    identifyDocType,
     queryToc,
     resolveIncludeContents,
-    Toc,
-    TocItem
 } from './fetchDocsToc'
 
 const AWS_CFN_DOC_ROOT = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide'
@@ -14,17 +17,17 @@ const AWS_CFN_TOC_URL = `${AWS_CFN_DOC_ROOT}/${AWS_CFN_TOC_FILE}`
 
 describe('fetchDocsToc', () => {
 
-    beforeAll( () => {
+    beforeAll(() => {
         fetch.enableMocks()
     })
 
-    beforeEach( () => {
+    beforeEach(() => {
         fetch.resetMocks()
     })
 
     describe('fetchIncludeContents()', () => {
         let mockTocItem: TocItem
-        beforeEach( () => {
+        beforeEach(() => {
             mockTocItem = {
                 title: "level.0",
                 href: "level.0.html",
@@ -78,16 +81,43 @@ describe('fetchDocsToc', () => {
         })
 
         describe.skip('should fail when', () => {
-            test('the include_contents key is missing', async () => {})
-            test('the include_contents key is empty', async () => {})
-            test('fetch returns invalid data', async () => {})
+            test('the include_contents key is missing', async () => { })
+            test('the include_contents key is empty', async () => { })
+            test('fetch returns invalid data', async () => { })
         })
     })
+
+    describe('identifyDocType()', () => {
+        describe('should succeed when', () => {
+            test.each([
+                [{ 'title': 'AWS Example', 'href': 'AWS_Example' }, 'Service'],
+                [{ 'title': 'Example Property', 'href': 'aws-properties-example-prop.html' }, 'Property'],
+                [{ 'title': 'Example resource', 'href': 'aws-resource-example-res.html' }, 'Resource'],
+                [{ 'title': 'Example attribute', 'href': 'aws-attribute-example-attr.html' }, 'Attribute'],
+                [{ 'title': 'Example function', 'href': 'intrinsic-function-reference-example-fn.html' }, 'Function'],
+                [{ 'title': 'Alexa Example', 'href': 'Alexa_Example.html' }, 'Service'],
+                [{ 'title': 'Example property', 'href': 'alexa-properties-example-prop.html' }, 'Property'],
+                [{ 'title': 'Example property', 'href': 'alexa-resource-example-res.html' }, 'Resource'],
+            ])('given a filename with an expected prefix', async (item, expectedDocType) => {
+                const docType = await identifyDocType(item)
+                expect(docType).toBe(expectedDocType)
+            })
+        })
+
+        describe('should fail when', () => {
+            // Still some unmatched files I'm not sure yet what to do with.
+            test.skip('given a filename with an unknown prefix', async () => {
+                const item = { 'title': 'Unmatched Example', 'href': 'UnMatchedExample' }
+                await expect(identifyDocType(item)).rejects.toThrow(Error)
+            })
+        })
+    })
+
 
     describe('resolveIncludeContents()', () => {
         let mockTocItem: TocItem
 
-        beforeEach( () => {
+        beforeEach(() => {
             mockTocItem = {
                 title: "level.0",
                 href: "level.0.html",
@@ -185,7 +215,7 @@ describe('fetchDocsToc', () => {
             })
 
             // Have never seen this
-            test.skip('item has include_contents and contents', async () => {})
+            test.skip('item has include_contents and contents', async () => { })
 
 
             test('resolving include_content in contents', async () => {
@@ -382,6 +412,6 @@ describe('fetchDocsToc', () => {
     })
 
     describe('fetchDocsToc()', () => {
-        test.skip('unit tests unnecessatu', () =>{})
+        test.skip('unit tests unnecessatu', () => { })
     })
 })
