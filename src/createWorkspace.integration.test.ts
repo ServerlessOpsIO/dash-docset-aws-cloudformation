@@ -1,15 +1,9 @@
 import fs from 'fs-extra'
 import path from 'path'
 import os from 'os'
-import { compilerOptions } from '../tsconfig.json'
 
 import { createWorkspace } from './createWorkspace'
-
-// Resolve APP_ROOT based on whether TS or compiled JS.
-const APP_ROOT = path.resolve(
-    __dirname,
-    path.basename(path.dirname(__dirname)) == compilerOptions.outDir ? '../..' : '..'
-)
+import { APP_ROOT } from './index'
 
 describe('createWorkspace', () => {
     describe('createWorkspace()', () => {

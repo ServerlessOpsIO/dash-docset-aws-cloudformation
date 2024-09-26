@@ -11,17 +11,17 @@ const AWS_CFN_TOC_FILE = 'toc-contents.json'
 const AWS_CFN_TOC_URL = `${AWS_CFN_DOC_ROOT}/${AWS_CFN_TOC_FILE}`
 
 // Resolve APP_ROOT based on whether TS or compiled JS.
-const APP_ROOT = path.resolve(
+export const APP_ROOT = path.resolve(
     __dirname,
     path.basename(path.dirname(__dirname)) == compilerOptions.outDir ? '../..' : '..'
 )
 export const DOC_BUILD_ROOT = path.join(APP_ROOT, 'docbuild')
 
-export async function main(): Promise<void> {
+export async function main(appRoot: string, docBuildRoot: string): Promise<void> {
     const {
         docsetDocsDir,
         docsetResourcesDir
-    } = await createWorkspace(APP_ROOT, DOC_BUILD_ROOT)
+    } = await createWorkspace(appRoot, docBuildRoot)
     const tocSections = await fetchDocsToc(AWS_CFN_TOC_URL)
 
     await Promise.all(
@@ -33,4 +33,11 @@ export async function main(): Promise<void> {
     await createDb(docsetResourcesDir, tocSections)
 }
 
-main();
+if (require.main === module) {
+    Promise.resolve()
+        .then(() => main(APP_ROOT, DOC_BUILD_ROOT))
+        .catch(err => {
+            console.error(err)
+            process.exit(1)
+        })
+}
