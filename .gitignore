@@ -45,3 +45,7 @@ yarn.lock
 .vscode
 !.vscode/launch.json
 !.vscode/tasks.json
+
+# Ignore any local docsets or docs used for testing
+data/aws-cloudformation.docset
+data/remote
