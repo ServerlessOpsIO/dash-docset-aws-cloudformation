@@ -76,10 +76,16 @@ export function identifyDocType(tocItem: TocItem): string {
         docType = 'Property'
     } else if (tocItem.href.startsWith('alexa-resource-')) {
         docType = 'Resource'
+    } else if ( tocItem.href == 'aws-template-resource-type-ref.html' ) {
+        docType = 'Guide'
+    } else if ( tocItem.href == 'aws-product-attribute-reference.html' ) {
+        docType = 'Guide'
+    } else if ( tocItem.href == 'cfn-reference-shared.html') {
+        docType = 'Guide'
+    } else if (tocItem.href == 'conditions-sample-templates.html') {
+        docType = 'Guide'
     } else {
-        //throw new Error('Unknown item type; filename: ' + filename)
-        console.warn('Unknown item type; filename: ' + tocItem.href)
-        docType = 'Unknown'
+        throw new Error('Unknown item type; filename: ' + tocItem.href)
     }
 
     if (tocItem.contents) {

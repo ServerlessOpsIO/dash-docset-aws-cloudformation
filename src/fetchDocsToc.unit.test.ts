@@ -99,16 +99,16 @@ describe('fetchDocsToc', () => {
                 [{ 'title': 'Example property', 'href': 'alexa-properties-example-prop.html' }, 'Property'],
                 [{ 'title': 'Example property', 'href': 'alexa-resource-example-res.html' }, 'Resource'],
             ])('given a filename with an expected prefix', async (item, expectedDocType) => {
-                const docType = await identifyDocType(item)
+                const docType = identifyDocType(item)
                 expect(docType).toBe(expectedDocType)
             })
         })
 
         describe('should fail when', () => {
             // Still some unmatched files I'm not sure yet what to do with.
-            test.skip('given a filename with an unknown prefix', async () => {
+            test('given a filename with an unknown prefix', async () => {
                 const item = { 'title': 'Unmatched Example', 'href': 'UnMatchedExample' }
-                await expect(identifyDocType(item)).rejects.toThrow(Error)
+                expect(() => identifyDocType(item)).toThrow(Error)
             })
         })
     })
