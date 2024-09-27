@@ -61,7 +61,7 @@ export function identifyDocType(tocItem: TocItem): string {
     if ( tocItem.href.startsWith('AWS_') ) {
             docType = 'Service'
     } else if ( tocItem.href.startsWith('aws-properties-') ) {
-        docType = 'Property'
+        docType = 'Type'
     } else if ( tocItem.href.startsWith('aws-resource-') ) {
         docType = 'Resource'
     } else if (tocItem.href.startsWith('aws-attribute-')) {
