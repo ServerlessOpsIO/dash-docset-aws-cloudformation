@@ -68,6 +68,10 @@ jobs:
         shell: bash
         run: corepack enable
 
+      - name: Install dependencies
+        shell: bash
+        run: yarn install --immutable
+
       - name: Package
         shell: bash
         run: yarn run package
