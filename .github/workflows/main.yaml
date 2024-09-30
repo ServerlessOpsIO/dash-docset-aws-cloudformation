@@ -40,7 +40,7 @@ jobs:
 
       - name: Generate docset
         shell: bash
-        run: yarn run docset
+        run: yarn run generate
 
       - name: Store Artifacts
         uses: ServerlessOpsIO/gha-store-artifacts@v1
