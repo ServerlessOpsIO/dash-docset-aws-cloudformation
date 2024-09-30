@@ -1,0 +1,66 @@
+name: Main
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Setup job workspace
+        uses: ServerlessOpsIO/gha-setup-workspace@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Yarn via corepack
+        shell: bash
+        run: corepack enable
+
+      - name: Install dependencies
+        shell: bash
+        run: yarn install --immutable
+
+      - name: Build
+        shell: bash
+        run: yarn run build
+
+      - name: Test
+        shell: bash
+        run: yarn run test
+
+      - name: Generate docset
+        shell: bash
+        run: yarn run docset
+
+      - name: Store Artifacts
+        uses: ServerlessOpsIO/gha-store-artifacts@v1
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Setup job workspace
+        uses: ServerlessOpsIO/gha-setup-workspace@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Package
+        shell: bash
+        run: yarn run package
