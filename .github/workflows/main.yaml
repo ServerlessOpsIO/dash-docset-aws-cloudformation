@@ -64,6 +64,10 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install Yarn via corepack
+        shell: bash
+        run: corepack enable
+
       - name: Package
         shell: bash
         run: yarn run package
