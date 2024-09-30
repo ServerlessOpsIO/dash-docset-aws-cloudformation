@@ -10,16 +10,19 @@ const AWS_CFN_DOC_ROOT = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/U
 const mockTocItem: TocItem = {
     "title": "Amazon CloudWatch Logs",
     "href": "AWS_Logs.html",
+    "docType": "Service"
 }
 
 const mockTocItemContents: TocItem[] = [
     {
         "title": "AWS::Logs::AccountPolicy",
-        "href": "aws-resource-logs-accountpolicy.html"
+        "href": "aws-resource-logs-accountpolicy.html",
+        "docType": "Resource"
     },
     {
         "title": "AWS::Logs::Delivery",
         "href": "aws-resource-logs-delivery.html",
+        "docType": "Resource"
     }
 ]
 

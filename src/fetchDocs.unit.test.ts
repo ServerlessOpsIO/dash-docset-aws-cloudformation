@@ -53,7 +53,8 @@ describe("fetchDocs", () => {
                 test('Given valid valid tocItem, urlRoot, and docsDir', async () => {
                     const tocItem = {
                         title: "title",
-                        href: "index.html",
+                        href: "AWS_Example.html",
+                        docType: "Service"
                     }
                     fetch.mockResponse('')
 
@@ -64,7 +65,8 @@ describe("fetchDocs", () => {
                 test('Given valid valid tocItem (with contents), urlRoot, and docsDir', async () => {
                     const tocItem = {
                         title: "title",
-                        href: "index.html",
+                        href: "AWS_Example.html",
+                        docType: "Service"
                     }
 
                     const tocItemWithContents = {
@@ -96,7 +98,8 @@ describe("fetchDocs", () => {
                 test('Given valid valid tocItem, urlRoot, and docsDir', async () => {
                     const tocItem = {
                         title: "title",
-                        href: "index.html",
+                        href: "AWS_Example.html",
+                        docType: "Service"
                     }
 
                     fetch.mockResponse('')
@@ -109,7 +112,8 @@ describe("fetchDocs", () => {
                 test('Given valid valid tocItem (with contents), urlRoot, and docsDir', async () => {
                     const tocItem = {
                         title: "title",
-                        href: "index.html",
+                        href: "AWS_Example.html",
+                        docType: "Service"
                     }
 
                     const tocItemWithContents = {
@@ -144,7 +148,8 @@ describe("fetchDocs", () => {
                 test('file with same name as tocItem file already exists', async () => {
                     const tocItem = {
                         title: "title",
-                        href: "index.html",
+                        href: "AWS_Example.html",
+                        docType: "Service"
                     }
                     fetch.mockResponse('')
 

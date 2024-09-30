@@ -91,12 +91,12 @@ describe('fetchDocsToc', () => {
         describe('should succeed when', () => {
             test.each([
                 [{ 'title': 'AWS Example', 'href': 'AWS_Example' }, 'Service'],
-                [{ 'title': 'Example Property', 'href': 'aws-properties-example-prop.html' }, 'Property'],
+                [{ 'title': 'Example Property', 'href': 'aws-properties-example-prop.html' }, 'Type'],
                 [{ 'title': 'Example resource', 'href': 'aws-resource-example-res.html' }, 'Resource'],
                 [{ 'title': 'Example attribute', 'href': 'aws-attribute-example-attr.html' }, 'Attribute'],
                 [{ 'title': 'Example function', 'href': 'intrinsic-function-reference-example-fn.html' }, 'Function'],
                 [{ 'title': 'Alexa Example', 'href': 'Alexa_Example.html' }, 'Service'],
-                [{ 'title': 'Example property', 'href': 'alexa-properties-example-prop.html' }, 'Property'],
+                [{ 'title': 'Example property', 'href': 'alexa-properties-example-prop.html' }, 'Type'],
                 [{ 'title': 'Example property', 'href': 'alexa-resource-example-res.html' }, 'Resource'],
             ])('given a filename with an expected prefix', async (item, expectedDocType) => {
                 const docType = identifyDocType(item)
