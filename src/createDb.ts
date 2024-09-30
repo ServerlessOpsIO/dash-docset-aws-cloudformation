@@ -36,8 +36,13 @@ export async function initializeDb(dbFile: string): Promise<Database> {
  */
 export async function populateDb(db: Database, tocItem: TocItem): Promise<void> {
     console.info('Populating db with:', tocItem.title)
+
+    let title = tocItem.title
+    if ( tocItem.docType === 'Service' ) {
+        title = tocItem.title.replace(/^(AWS|Amazon)/, '').trim()
+    }
     await db.run(
-        `INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES ('${tocItem.title}', '${tocItem.docType}', '${tocItem.href}');`
+        `INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES ('${title}', '${tocItem.docType}', '${tocItem.href}');`
     )
 }
 

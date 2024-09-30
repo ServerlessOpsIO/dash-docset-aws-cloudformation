@@ -22,7 +22,7 @@ export async function addGuideTemplateResourcesTocSectionAnchors($: cheerio.Chee
     $('#main-col-body > .highlights').children().find('li').each((_, element) => {
         const $element = $(element)
         const $anchor = $('<a></a>')
-            .attr('name', `//apple_ref/cpp/Service/${$element.text()}`)
+            .attr('name', `//apple_ref/cpp/Service/${$element.text().replace(/^(AWS|Amazon)/, '').trim()}`)
             .attr('class', 'dashAnchor')
         $element.prepend($anchor)
     })
