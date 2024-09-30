@@ -73,7 +73,7 @@ export function identifyDocType(tocItem: TocItem): string {
     } else if (tocItem.href.startsWith('intrinsic-function-reference')) {
         docType = 'Function'
     } else if (tocItem.href == 'pseudo-parameter-reference.html') {
-        docType = 'Parameter'
+        docType = 'Guide'
     } else if ( tocItem.href.startsWith('Alexa_') ) {
         docType ='Service'
     } else if (tocItem.href.startsWith('alexa-properties-')) {
