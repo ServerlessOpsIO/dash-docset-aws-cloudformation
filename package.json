@@ -18,7 +18,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "yarn run clean && tsc",
-    "generate": "node dist/src/index.js"
+    "generate": "node dist/src/index.js",
+    "test": "jest",
+    "package": "cd docbuild && tar zcvf aws-cloudformation.docset.tgz aws-cloudformation.docset"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
