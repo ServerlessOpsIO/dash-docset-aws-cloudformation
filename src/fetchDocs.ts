@@ -6,9 +6,6 @@ import { addTocAnchors } from './addTocAnchors'
 import { TocItem } from './types'
 import { template } from './template.html'
 
-// FIXME: There's some missing CSS still
-// eg. Note and Important on aws-attribute-metadata.html
-
 /**
  * Create a page from the pageBody and add it to the template
  * 
