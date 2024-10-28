@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import os from 'os'
 import path from 'path'
 
-import { main, APP_ROOT} from './index'
+import { main, APP_ROOT, DOC_BUILD_ROOT} from './index'
 
 const REMOTE_DOCS_DIR = path.join(APP_ROOT, 'data/remote')
 
