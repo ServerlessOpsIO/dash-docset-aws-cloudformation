@@ -38,6 +38,9 @@ dist
 # Ignore documentation build output
 docbuild
 
+# Ignore utility site
+site
+
 # ignore yarn.lock
 yarn.lock
 

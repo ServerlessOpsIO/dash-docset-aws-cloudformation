@@ -19,8 +19,11 @@
     "clean": "rm -rf dist",
     "build": "yarn run clean && tsc",
     "generate": "node dist/src/index.js",
+    "generate::local": "DOC_ROOT=http://localhost:3000 yarn run generate",
     "test": "jest",
-    "package": "cd docbuild && tar zcvf aws-cloudformation.docset.tgz aws-cloudformation.docset"
+    "package": "cd docbuild && tar zcvf aws-cloudformation.docset.tgz aws-cloudformation.docset",
+    "site::fetch": "node dist/src/util/fetchSite.js",
+    "site::serve": "node dist/src/util/serveSite.js"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",

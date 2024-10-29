@@ -6,7 +6,7 @@ import { fetchDocsToc } from './fetchDocsToc'
 import { fetchDocs } from './fetchDocs'
 import { createDb } from './createDb'
 
-const AWS_CFN_DOC_ROOT = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide'
+const AWS_CFN_DOC_ROOT = process.env.DOC_ROOT || 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide'
 const AWS_CFN_TOC_FILE = 'toc-contents.json'
 const AWS_CFN_TOC_URL = `${AWS_CFN_DOC_ROOT}/${AWS_CFN_TOC_FILE}`
 
