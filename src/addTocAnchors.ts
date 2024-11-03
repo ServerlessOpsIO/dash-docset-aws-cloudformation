@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio'
 
-import { TocItem } from './types'
+import { TocItem } from './types.js'
 
 /*
 export async function addAttributeTocSectionAnchors($: cheerio.CheerioAPI): Promise<void> {

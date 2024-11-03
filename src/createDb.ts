@@ -3,7 +3,7 @@ import path from 'path'
 import { open, Database } from 'sqlite'
 import sqlite3 from 'sqlite3'
 
-import { TocItem, TocSections } from './types'
+import { TocItem, TocSections } from './types.js'
 
 export const DB_FILE_NAME = 'docSet.dsidx'
 

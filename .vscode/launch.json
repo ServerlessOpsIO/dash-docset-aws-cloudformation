@@ -9,8 +9,8 @@
             "request": "launch",
             "name": "Launch Program - index.ts",
             "runtimeArgs": [
-                "-r",
-                "ts-node/register"
+                "--import",
+                "tsx"
             ],
             "args": [
                 "${workspaceFolder}/src/index.ts"
@@ -21,8 +21,8 @@
             "request": "launch",
             "name": "Launch Program - fetchDocsToc.ts",
             "runtimeArgs": [
-                "-r",
-                "ts-node/register"
+                "--import",
+                "tsx"
             ],
             "args": [
                 "${workspaceFolder}/src/fetchDocsToc.ts"

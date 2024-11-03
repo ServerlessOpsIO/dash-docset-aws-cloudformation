@@ -1,7 +1,7 @@
 import jp from 'jsonpath'
 import path from 'path'
 
-import { Toc, TocItem, TocSections } from './types'
+import { Toc, TocItem, TocSections } from './types.js'
 
 interface TocSectionsQueries {
     resources: string

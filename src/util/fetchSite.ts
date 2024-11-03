@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import path from 'path'
-import { Toc, TocItem } from '../types'
+import { Toc, TocItem } from '../types.js'
 
 const AWS_CFN_DOC_ROOT = 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide'
 const AWS_CFN_TOC_FILE = 'toc-contents.json'

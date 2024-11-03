@@ -2,9 +2,10 @@ import fs from 'fs-extra'
 import path from 'path'
 import * as cheerio from 'cheerio'
 
-import { addTocAnchors } from './addTocAnchors'
-import { TocItem } from './types'
-import { template } from './template.html'
+import { addTocAnchors } from './addTocAnchors.js'
+import { highlightCode } from './highlightCode.js'
+import { TocItem } from './types.js'
+import { template } from './template.html.js'
 
 /**
  * Create a page from the pageBody and add it to the template
