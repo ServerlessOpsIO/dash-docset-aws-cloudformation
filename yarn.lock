@@ -1980,6 +1980,7 @@ __metadata:
     cheerio: "npm:^1.0.0"
     express: "npm:^4.21.1"
     fs-extra: "npm:^11.2.0"
+    highlight.js: "npm:^11.10.0"
     jest: "npm:^29.7.0"
     jest-fetch-mock: "npm:^3.0.3"
     jsonpath: "npm:^1.1.1"
@@ -2891,6 +2892,13 @@ __metadata:
   dependencies:
     function-bind: "npm:^1.1.2"
   checksum: 10c0/3769d434703b8ac66b209a4cca0737519925bbdb61dd887f93a16372b14694c63ff4e797686d87c90f08168e81082248b9b028bad60d4da9e0d1148766f56eb9
+  languageName: node
+  linkType: hard
+
+"highlight.js@npm:^11.10.0":
+  version: 11.10.0
+  resolution: "highlight.js@npm:11.10.0"
+  checksum: 10c0/cd8bf7ef06cbd72ddb83580ecabe769f08f062be8bb82d2eb492d31c17f7480d1f8d14a66fc81deee0601645435f19f04c470510563f847242a41ccff0ab873e
   languageName: node
   linkType: hard
 

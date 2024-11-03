@@ -47,6 +47,9 @@ export async function fetchDocs(
     // Add the TOC anchors
     await addTocAnchors($page, tocItem)
 
+    // Hightlight code blocks
+    await highlightCode($page)
+
     // Save the page to a file
     const filePath = path.join(docsDir, tocItem.href)
 

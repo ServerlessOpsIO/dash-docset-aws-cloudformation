@@ -46,6 +46,7 @@
   "dependencies": {
     "cheerio": "^1.0.0",
     "fs-extra": "^11.2.0",
+    "highlight.js": "^11.10.0",
     "jsonpath": "^1.1.1",
     "path": "^0.12.7",
     "sqlite": "^5.1.1",
