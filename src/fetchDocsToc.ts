@@ -1,3 +1,4 @@
+import got from 'got'
 import jp from 'jsonpath'
 import path from 'path'
 
@@ -27,8 +28,8 @@ export enum TocSectionTitles {
  */
 export async function fetchIncludeContents(tocItem: TocItem, urlRoot: string): Promise<TocItem> {
     console.info('Fetching TOC:', [urlRoot, tocItem.include_contents].join('/'))
-    const response = await fetch([urlRoot, tocItem.include_contents].join('/'))
-    const includeContents = await response.json() as TocItem
+    const response = await got([urlRoot, tocItem.include_contents].join('/'))
+    const includeContents = await JSON.parse(response.body) as TocItem
 
     if ( !includeContents.contents || includeContents.contents?.length == 0 ) {
         throw new Error('Invalid include_contents')
@@ -151,8 +152,8 @@ export async function resolveIncludeContents(
  */
 export async function fetchDocsToc(url: string): Promise<TocSections> {
     console.info('Fetching TOC: ', url)
-    const response = await fetch(url)
-    const toc = await response.json() as Toc
+    const response = await got(url)
+    const toc = await JSON.parse(response.body) as Toc
 
     const tocSectionQueries: TocSectionsQueries = {
         resources: `$.contents[?(@.title=="${TocSectionTitles.TEMPLATE_REFERENCE}")].contents[?(@.title=="${TocSectionTitles.RESOURCE_AND_PROPERTY_REFERENCE}")]`,

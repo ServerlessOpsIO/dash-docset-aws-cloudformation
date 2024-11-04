@@ -1,4 +1,5 @@
 import fs from 'fs-extra'
+import got from 'got'
 import path from 'path'
 import * as cheerio from 'cheerio'
 
@@ -40,8 +41,8 @@ export async function fetchDocs(
 ): Promise<void> {
     // Fetch the page
     console.info('Fetching doc page:', [urlRoot, tocItem.href].join('/'))
-    const response = await fetch([urlRoot, tocItem.href].join('/'))
-    const body = await response.text()
+    const response = await got([urlRoot, tocItem.href].join('/'))
+    const body = response.body
     const $page = await createPage(body)
 
     // Add the TOC anchors
