@@ -25,7 +25,7 @@ export async function main(appRoot: string, docBuildRoot: string): Promise<void>
     const tocSections = await fetchDocsToc(AWS_CFN_TOC_URL)
 
     await Promise.all(
-        Object.entries(tocSections).map( async ([_, items]) => {
+        Object.entries(tocSections).map( ([_, items]) => {
             return fetchDocs(items, AWS_CFN_DOC_ROOT, docsetDocsDir)
         })
     )

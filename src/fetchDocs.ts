@@ -63,7 +63,7 @@ export async function fetchDocs(
     // Recursively fetch the contents tocItems
     if (tocItem.contents) {
         await Promise.all(
-            tocItem.contents.map(async (content) => {
+            tocItem.contents.map( (content) => {
                 return fetchDocs(content, urlRoot, docsDir)
             })
         )
