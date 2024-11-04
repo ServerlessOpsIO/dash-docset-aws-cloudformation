@@ -3,19 +3,19 @@
 <plist version="1.0">
     <dict>
         <key>CFBundleIdentifier</key>
-        <string>aws-cloudformation</string>
+        <string>aws-cfn</string>
 
         <key>CFBundleName</key>
         <string>AWS CloudFormation</string>
 
         <key>DocSetPlatformFamily</key>
-        <string>aws-cloudformation</string>
+        <string>aws-cfn</string>
 
         <key>isDashDocset</key>
         <true/>
 
         <key>isJavaScriptEnabled</key>
-        <true/>
+        <false/>
 
         <key>dashIndexFilePath</key>
         <string>aws-template-resource-type-ref.html</string>
