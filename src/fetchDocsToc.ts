@@ -62,7 +62,7 @@ export function identifyDocType(tocItem: TocItem): string {
     if ( tocItem.href.startsWith('AWS_') ) {
             docType = 'Service'
     } else if ( tocItem.href.startsWith('aws-properties-') ) {
-        docType = 'Type'
+        docType = 'Property'
     } else if ( tocItem.href.startsWith('aws-resource-') ) {
         docType = 'Resource'
     } else if (tocItem.href.startsWith('aws-attribute-')) {
@@ -78,7 +78,7 @@ export function identifyDocType(tocItem: TocItem): string {
     } else if ( tocItem.href.startsWith('Alexa_') ) {
         docType ='Service'
     } else if (tocItem.href.startsWith('alexa-properties-')) {
-        docType = 'Type'
+        docType = 'Property'
     } else if (tocItem.href.startsWith('alexa-resource-')) {
         docType = 'Resource'
     } else if ( tocItem.href == 'aws-template-resource-type-ref.html' ) {
