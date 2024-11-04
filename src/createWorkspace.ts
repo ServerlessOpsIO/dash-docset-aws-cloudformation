@@ -1,14 +1,14 @@
 import fs from 'fs-extra'
 import path from 'path'
 
+import { open, Database } from 'sqlite'
+import sqlite3 from 'sqlite3'
 
-const DOCSET_DIR = 'aws-cloudformation.docset'
-const DOCSET_CONTENTS_DIR = 'Contents'
-const DOCSET_RESOURCES_DIR = path.join(DOCSET_CONTENTS_DIR, 'Resources')
-const DOCSET_DOCS_DIR = path.join(DOCSET_RESOURCES_DIR, 'Documents')
-const PLIST_FILE_NAME = 'Info.plist'
-const PLIST_FILE_PATH = path.join(DOCSET_CONTENTS_DIR, PLIST_FILE_NAME)
-const ICON_FILE_NAME = 'icon.png'
+import {
+    DOCSET_DIR,
+    DOCSET_DOCS_DIR,
+    DB_FILE_PATH
+} from './paths.js'
 
 
 export interface WorkspaceDirs {
@@ -22,31 +22,43 @@ export interface WorkspaceDirs {
 
 
 /**
+ * Initialize database
+ *
+ * Create searchIndex table with columns id, name, type, and path
+ *
+ * @param dbFile Database file path
+ */
+export async function initializeDb(dbFile: string): Promise<Database> {
+    const db = await open({
+        filename: dbFile,
+        driver: sqlite3.Database,
+    })
+
+    await db.run(
+        'CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT);'
+    )
+    await db.run('CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);')
+
+    return db
+}
+
+
+/**
  * Create workspace for building docset
  *
  * @param appRoot Root directory for app
  * @param buildRoot Root directory for building docset
  */
-export async function createWorkspace(appRoot: string, buildRoot: string): Promise<WorkspaceDirs> {
+export async function createWorkspace(appRoot: string, buildRoot: string): Promise<void> {
 
     const docsetDir = path.join(buildRoot, DOCSET_DIR)
-    const docsetContentsDir = path.join(docsetDir, DOCSET_CONTENTS_DIR)
-    const docsetResourcesDir = path.join(docsetDir, DOCSET_RESOURCES_DIR)
     const docsetDocsDir = path.join(docsetDir, DOCSET_DOCS_DIR)
-    const plistFilePath = path.join(docsetDir, PLIST_FILE_PATH)
-    const iconFilePath = path.join(docsetDir, ICON_FILE_NAME)
 
     await fs.emptyDir(buildRoot);
     await fs.ensureDir(docsetDocsDir)   // deepest directory path
     await fs.copy(path.join(appRoot, 'static'), docsetDir)
 
+    await initializeDb(path.join(docsetDir, DB_FILE_PATH))
 
-    return {
-        docsetDir,
-        docsetContentsDir,
-        docsetResourcesDir,
-        docsetDocsDir,
-        plistFilePath,
-        iconFilePath
-    }
+    return
 }
